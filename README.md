@@ -26,7 +26,7 @@ $ cd ADS
 $ git checkout -b development
 ```
 
-When we 'check out a branch', what we're doing is choosing a new instance of our `master` repo that has a purpose.
+When we 'check out a branch', what we're doing is creating and selecting a new instance of our `master` repo.
 
 ### Updating repository with new changes
 We're going to be developing on the same branch for now to avoid confusion as we learn team-oriented git development. When we make commits and add changes, we'll need a way for other people to receive these changes. We'll do that with the following command:
