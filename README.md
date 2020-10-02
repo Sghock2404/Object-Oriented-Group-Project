@@ -2,7 +2,7 @@
 Team ADS
 
 # ADS General
-==========
+-----
 Here's an outline of how we're going to add progress to this `development` branch. We're going to add changes here because normally people save the master branch for "deployment-ready" code - so we'll treat it as our final product :)
 
 My goal is that this README helps you both out with understanding our project structure - if something doesn't work let me know and I'll make changes to this text. (I'm learning this as well, lol)
