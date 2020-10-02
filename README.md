@@ -23,7 +23,7 @@ Now we're going to `cd` into the new directory and `git checkout` a `development
 
 ```powershell 
 $ cd ADS
-$ git checkout development
+$ git checkout -b development
 ```
 
 When we 'check out a branch', what we're doing is choosing a new instance of our `master` repo that has a purpose.
