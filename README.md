@@ -12,21 +12,26 @@ Setup
 ### Cloning the repository
 First let's `git clone` this repository into whatever local directory you'd like:
 
-  $ cd 'your_desired_directory'
-  $ git clone https://git.txstate.edu/CS3354/ADS.git
-  
+```powershell
+$ cd 'your_desired_directory'
+$ git clone https://git.txstate.edu/CS3354/ADS.git
+```
 ### Checking out a 'development' branch
 Now we're going to `cd` into the new directory and `git checkout` a `development` branch so that we don't make changes to `master` - our final product:
-  
-  $ cd ADS
-  $ git checkout development
-  
+
+```powershell 
+$ cd ADS
+$ git checkout development
+```
+
 When we 'check out a branch', what we're doing is choosing a new instance of our `master` repo that has a purpose.
 
 ### Updating repository with new changes
 We're going to be developing on the same branch for now to avoid confusion as we learn team-oriented git development. When we make commits and add changes, we'll need a way for other people to receive these changes. We'll do that with the following command:
 
+```powershell
   $ git fetch -all
+```
   
 This `fetch -all` command will obtain ALL changes made to all branches for our project repository. It might be a good idea to use this command every time you start work on the assignment or if we announce big changes in team chat.
 
@@ -37,16 +42,17 @@ Progress and work
 
 Here I'll put some information about who's doing what tasks for the project.
 
-### Tasks
+### Tasks (adding more detailed ones later today)
 * Rating Summary
 * Data
 
 ### Adding and committing changes
 As you do work and finish implementing something, `add` and `commit` those changes so that everyone can later fetch those changes and apply it to our work.
 
+```powershell
   $ git add .
   $ git commit -m 'Implement bananaFarm()'
-  
+```
 Eventually, when we finish the assignment, I'll merge the `development` branch into the master branch and that will be what we submit for the assignment.
 
 ## Other 
