@@ -1,8 +1,7 @@
 package project1;
 
-/**
- * Team needs to add relevant packages here
- */
+/* Team needs to add relevant packages here */
+import java.util.*;
 
 /**
 * Ratings Summary supporting inner and outer statistics of the review 

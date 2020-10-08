@@ -1,8 +1,8 @@
 package project1;
 
-/**
- * Team needs to add relevant include packages
- */
+/* Team needs to add relevant include packages */
+
+import java.util.*;
 
 /**
  *  Provides functionality for interacting with the user, main class 
