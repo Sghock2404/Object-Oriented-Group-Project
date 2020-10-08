@@ -12,10 +12,10 @@ There are also a lot of other `git` commands that can do very elaborate things a
 Setup
 -----
 ### Cloning the repository
-First let's `git clone` this repository into whatever local directory you'd like:
+First let's `git clone` this repository into the 2020Fall class repository:
 
 ```powershell
-$ cd 'your_desired_directory'
+$ cd .../2020Fall
 $ git clone https://git.txstate.edu/CS3354/ADS.git
 ```
 ### Checking out a 'development' branch
