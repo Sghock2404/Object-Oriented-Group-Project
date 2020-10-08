@@ -1,6 +1,7 @@
 package project1;
 
 /* Team needs to import relevant packages here */
+//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
 import java.util.*;
 import java.io.*;
 import java.nio.file.*;
@@ -213,6 +214,7 @@ public class DatasetHandler{
 	public boolean addRatings(Dataset inData){
 		//assume element is initialized with dataID and path to raw data 
 		//implement method
+		return true;
 	}
 
 		/**
@@ -222,6 +224,7 @@ public class DatasetHandler{
 	public boolean addStats(Dataset inData){
 		//assume element is initialized with dataID and path to raw data 
 		//implement method
+		return true;
 	}
 
 	/**
@@ -232,6 +235,7 @@ public class DatasetHandler{
 	 */
 	public Dataset getCollection(String dataID) throws IOException{
 		//implement method
+		return null;
 	}
 
 	/**
@@ -262,6 +266,7 @@ public class DatasetHandler{
 	public boolean addCollection(final String dataID, final String input) {
 
 		//implement method
+		return true;
 	}
 
 	private final Set<Dataset> db;

@@ -1,7 +1,9 @@
 package project1;
 
 /* add relevant import classes and methods */
+//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *  Inventory of the datasets in DATA_FILE_FOLDER, kept in DATA_FILE_NAME
@@ -29,7 +31,8 @@ public class DataAnalysis{
  	* @return reference to list sorted by product avg and review avg differ the most 
  	*/
 	public static List sortByAvgDiff(List<AbstractRatingSummary> inList) {
-		//implement method
+		//implement method!!!
+		return inList;
     }
 
     /**
@@ -37,9 +40,8 @@ public class DataAnalysis{
  	* @return reference to list sorted by product and review variance differ the most 
  	*/
 	public static List sortByStDevDiff(List<AbstractRatingSummary> inList) {
-		
-		//implement method
-
+		//implement method!!!
+		return inList;
 	}
 	
 	/**

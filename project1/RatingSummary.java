@@ -1,6 +1,7 @@
 package project1;
 
 /* Team needs to add relevant packages here */
+//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
 import java.util.*;
 
 /**

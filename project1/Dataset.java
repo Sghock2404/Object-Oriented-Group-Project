@@ -1,7 +1,9 @@
 package project1;
 
 /* Team needs to import relevant packages here */
+//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
 import java.util.*;
+import java.io.*;
 import java.io.IOException;
 import java.nio.file.*;
 
@@ -90,6 +92,7 @@ public class Dataset {
 	public boolean computeStats(){
 		//do not append, start from scratch
 		//implement method
+		return true;
 	}
 
 	public String saveStats(){
