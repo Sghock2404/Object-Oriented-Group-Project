@@ -4,6 +4,7 @@ package project1;
 //more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.List;
 
 /**
  *  Inventory of the datasets in DATA_FILE_FOLDER, kept in DATA_FILE_NAME
@@ -32,6 +33,11 @@ public class DataAnalysis{
  	*/
 	public static List sortByAvgDiff(List<AbstractRatingSummary> inList) {
 		//implement method!!!
+		Collections.sort(inList, new Comparator<AbstractRatingSummary>() {
+			public int compare(AbstractRatingSummary r1, AbstractRatingSummary r2) {
+				return Float.compare(r1.avgScore(), r2.avgScore());
+			}
+		});
 		return inList;
     }
 
@@ -41,6 +47,11 @@ public class DataAnalysis{
  	*/
 	public static List sortByStDevDiff(List<AbstractRatingSummary> inList) {
 		//implement method!!!
+		Collections.sort(inList, new Comparator<AbstractRatingSummary>() {
+			public int compare(AbstractRatingSummary r1, AbstractRatingSummary r2) {
+				return Float.compare(r1.stDevScore(), r2.stDevScore());
+			}
+		});
 		return inList;
 	}
 	

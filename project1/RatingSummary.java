@@ -31,6 +31,7 @@ public class RatingSummary extends AbstractRatingSummary{
      */
     public RatingSummary(final String inNodeID, final long inDegree) {
 		//implement constructor
+		super(inNodeID, inDegree);   
 	}
 
 	/**
@@ -46,6 +47,12 @@ public class RatingSummary extends AbstractRatingSummary{
 	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev, final float reviewerAvg,
 	final float reviewerStDev) {
 		//implement constructor
+		this.id = id; 
+		this.degree = degree;
+		this.productAvg = productAvg;
+		this.productStDev = productStDev;
+		this.reviewerAvg = reviewerAvg;
+		this.reviewerStDev = reviewerStDev;  
 	}
 
 	/**
@@ -145,5 +152,13 @@ public class RatingSummary extends AbstractRatingSummary{
 	}
 
    //add methods if needed
+   private final String id;
+   private final long degree;
+   private final float productAvg;
+   private final float productStDev;
+   private final float reviewerAvg;
+   private final float reviewerStDev;
+
+
 
 }
