@@ -30,7 +30,6 @@ public class RatingSummary extends AbstractRatingSummary{
      * @param inDegree
      */
     public RatingSummary(final String inNodeID, final long inDegree) {
-		//implement constructor
 		super(inNodeID, inDegree);   
 	}
 
@@ -79,7 +78,13 @@ public class RatingSummary extends AbstractRatingSummary{
 	}
 
 	public List<Float> createList(float productAvg, float productStDev, float reviewerAvg, float reviewerStDev) {
-				//implement method
+		List<Float> newList = createList();
+		newList.add(productAvg);
+		newList.add(productStDev);
+		newList.add(reviewerAvg);
+		newList.add(reviewerStDev);
+
+		return newList;
 	}
 
 
