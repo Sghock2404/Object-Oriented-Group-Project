@@ -183,7 +183,7 @@ public class RatingSummary extends AbstractRatingSummary {
 		// implement method
 	}
 
-	// // //add methods if needed
+   //add methods if needed
 	private final String id;
 	private final long degree;
 	private final float productAvg;
