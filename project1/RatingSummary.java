@@ -1,16 +1,17 @@
 package project1;
 
-/* Team needs to add relevant packages here */
-//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
-* Ratings Summary supporting inner and outer statistics of the review 
-  @author tesic
-  @author tarek
-*/
+ * Ratings Summary supporting inner and outer statistics of the review
+ * 
+ * @author Himaja
+ * @author Scott
+ * @author Daniel
+ */
 
-public class RatingSummary extends AbstractRatingSummary{
+public class RatingSummary extends AbstractRatingSummary {
 
 	/**
 	 * Constructor.
@@ -24,27 +25,27 @@ public class RatingSummary extends AbstractRatingSummary{
 	}
 
 	/**
-     * Constructor.
+	 * Constructor.
 	 * 
-     * @param inNodeID
-     * @param inDegree
-     */
-    public RatingSummary(final String inNodeID, final long inDegree) {
-		super(inNodeID, inDegree);   
+	 * @param inNodeID
+	 * @param inDegree
+	 */
+	public RatingSummary(final String inNodeID, final long inDegree) {
+		super(inNodeID, inDegree);
 	}
 
 	/**
-     * Constructor.
-     * 
-     * @param id        	product/review id
-     * @param degree		number of times reviewed
-     * @param productAvg    average rating of the product
-     * @param productStDev 	standard deviation of the product's rating
-     * @param reviewerAvg   average rating of the reviewer
-     * @param reviewerStDev standard deviation of the reviewer's ratings
-     */
-	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev, final float reviewerAvg,
-	final float reviewerStDev) {
+	 * Constructor.
+	 * 
+	 * @param id            product/review id
+	 * @param degree        number of times reviewed
+	 * @param productAvg    average rating of the product
+	 * @param productStDev  standard deviation of the product's rating
+	 * @param reviewerAvg   average rating of the reviewer
+	 * @param reviewerStDev standard deviation of the reviewer's ratings
+	 */
+	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev,
+			final float reviewerAvg, final float reviewerStDev) {
 		//implement constructor
 		this.id = id; 
 		this.degree = degree;
@@ -55,30 +56,53 @@ public class RatingSummary extends AbstractRatingSummary{
 	}
 
 	/**
+	 * Constructor.
 	 * 
 	 * @param id
 	 * @param degree
 	 * @param rawRatings
 	 */
 	public RatingSummary(final String id, final List<Rating> rawRatings) {
-		//implement constructor
+		super(id);
+		super.setDegree(rawRatings);
 	}
 
+	/**
+	 * Create a newList using createList() and pass that into super.setList()
+	 */
 	public void setList() {
-		//implement method
+		super.setList(createList());
 	}
 
+	/**
+	 * Create a new list using createList() and parameters and passing that to
+	 * super.setList()
+	 * 
+	 * @param productAvg
+	 * @param productStDev
+	 * @param reviewerAvg
+	 * @param reviewerStDev
+	 */
 	public void setList(float productAvg, float productStDev, float reviewerAvg, float reviewerStDev) {
-		//implement method
+		super.setList(createList(productAvg, productStDev, reviewerAvg, reviewerStDev));
 	}
 
 	@Override
-	public List<Float> createList(){
+	public List<Float> createList() {
 		return new ArrayList<Float>();
 	}
 
+	/**
+	 * Create a list containing each of the parameters as values.
+	 * 
+	 * @param productAvg
+	 * @param productStDev
+	 * @param reviewerAvg
+	 * @param reviewerStDev
+	 * @return
+	 */
 	public List<Float> createList(float productAvg, float productStDev, float reviewerAvg, float reviewerStDev) {
-		List<Float> newList = createList();
+		List<Float> newList = createList();		
 		newList.add(productAvg);
 		newList.add(productStDev);
 		newList.add(reviewerAvg);
@@ -87,13 +111,15 @@ public class RatingSummary extends AbstractRatingSummary{
 		return newList;
 	}
 
-
 	/**
-	 * Prints RatingSummary object as form Id,degree,product avg,product st.dev,reviewer avg,reviewer st.dev\n
+	 * Prints RatingSummary object as form Id,degree,product avg,product
+	 * st.dev,reviewer avg,reviewer st.dev\n
 	 */
 	@Override
-	public String toString(){
-				//implement method	
+	public String toString() {
+		// implement method
+		return "ID: " + id + ", degree: " + degree + ", product avg: " + productAvg + ", product st.dev: " + productStDev
+				+ ", reviewer avg: " + reviewerAvg + ", reviewer st.dev: " + reviewerStDev + "\n";
 	}
 
 	private int printStats() {
@@ -102,68 +128,67 @@ public class RatingSummary extends AbstractRatingSummary{
 	}
 
 	/**
-	 * collect the list that keeps statistics 
-	 * Make sure the object was initialized 
+	 * collect the list that keeps statistics Make sure the object was initialized
 	 */
 	@Override
-	public void collectStats(final List<Rating> rawRatings){
+	public void collectStats(final List<Rating> rawRatings) {
+		// implement method
 
-				//implement method
 	}
 
 	/**
-	 * Collects product stats for nodeID -- never call this function directly, only through collectStats
+	 * Collects product stats for nodeID -- never call this function directly, only
+	 * through collectStats
+	 * 
 	 * @param rawRatings
 	 */
 	public void collectProductStats(final List<Rating> rawRatings) {
-
-				//implement method
+		// implement method
 
 	}
 
 	/**
-	 * Collects product stats for nodeID -- never call this function directly, only through collectStats
+	 * Collects product stats for nodeID -- never call this function directly, only
+	 * through collectStats
+	 * 
 	 * @param rawRatings
 	 */
 	public void collectReviewerStats(final List<Rating> rawRatings) {
+		// implement method
 
-				//implement method
-	
 	}
 
 	////////// Statistics block
 
-	/** 
-	 * @return sort by biggest difference between product and review average in collection 
+	/**
+	 * @return sort by biggest difference between product and review average in
+	 *         collection
 	 */
-	public Float avgScore(){
-		
-		//implement method
+	public Float avgScore() {
+		// implement method
 	}
 
-	/** 
-	 * @return sort by biggest difference between product and review st.dev. in collection   
+	/**
+	 * @return sort by biggest difference between product and review st.dev. in
+	 *         collection
 	 */
-	public Float stDevScore(){
-
-				//implement method
+	public Float stDevScore() {
+		// implement method
 	}
 
-	/** 
-	 * @return summary of statistics as key to sorting the rating summaries 
+	/**
+	 * @return summary of statistics as key to sorting the rating summaries
 	 */
-	public Float sortStats(){
-				//implement method
+	public Float sortStats() {
+		// implement method
 	}
 
-   //add methods if needed
-   private final String id;
-   private final long degree;
-   private final float productAvg;
-   private final float productStDev;
-   private final float reviewerAvg;
-   private final float reviewerStDev;
-
-
+	// // //add methods if needed
+	private final String id;
+	private final long degree;
+	private final float productAvg;
+	private final float productStDev;
+	private final float reviewerAvg;
+	private final float reviewerStDev;
 
 }

@@ -1,14 +1,22 @@
 package project1;
 
-/* Team needs to import relevant packages here */
-//more readable if we don't use the wildcard sign (*) - feel free to fix and import the specific package
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
+/**
+ * Dataset Object
+ * 
+ * @author Himaja
+ * @author Scott
+ * @author Daniel
+ */
 public class Dataset {
-	
+
 	/**
 	 * 
 	 * @param dataId
@@ -20,7 +28,7 @@ public class Dataset {
 		this.rawFile = nameOfFile;
 		this.numberOfRatings = numberOfRatings;
 		this.ratingList = new ArrayList<Rating>();
-		this.ratingStat = new ArrayList<AbstractRatingSummary>(); 
+		this.ratingStat = new ArrayList<AbstractRatingSummary>();
 	}
 
 	/**
@@ -36,24 +44,24 @@ public class Dataset {
 		this.rawFile = inRawFile;
 		this.numberOfRatings = Files.lines(inRawFile).count();
 		this.ratingList = new ArrayList<Rating>();
-		this.ratingStat = new ArrayList<AbstractRatingSummary>(); 
+		this.ratingStat = new ArrayList<AbstractRatingSummary>();
 	}
 
 	/**
 	 * 
-	 * @return number of ratings 
+	 * @return number of ratings
 	 * @throws InvalidDataPath
 	 * @throws IOException
 	 */
 	public int loadRatings() throws IOException {
-		
+
 		BufferedReader br = new BufferedReader(new FileReader(this.getRawFile().toFile()));
-        String line;
-        while((line = br.readLine()) != null) {
-		  String[] tempArr = line.split(DataAnalysis.DELIMITER);
-		  Rating r = new Rating(tempArr[0],tempArr[1],Integer.getInteger(tempArr[2]));
-		   this.ratingList.add(r);
-        }
+		String line;
+		while ((line = br.readLine()) != null) {
+			String[] tempArr = line.split(DataAnalysis.DELIMITER);
+			Rating r = new Rating(tempArr[0], tempArr[1], Integer.getInteger(tempArr[2]));
+			this.ratingList.add(r);
+		}
 		br.close();
 		return this.ratingList.size();
 	}
@@ -65,40 +73,41 @@ public class Dataset {
 	 * @throws IOException
 	 */
 	public int loadStats(Path inStatPath) throws IOException {
-		//load stats if file exists
+		// load stats if file exists
 		BufferedReader brs = new BufferedReader(new FileReader(inStatPath.toFile()));
-		String line; 
+		String line;
 		// reading first line with the column name
-		 brs.readLine();
-		
-		while((line = brs.readLine()) != null) {
+		brs.readLine();
+
+		while ((line = brs.readLine()) != null) {
 
 			final String[] tempArr = line.split(DataAnalysis.DELIMITER);
 			final int len = tempArr.length;
 
-			if (len>5){
-				RatingSummary rs = new RatingSummary(tempArr[0],Long.getLong(tempArr[1]));
-				rs.createList(Float.valueOf(tempArr[2]), Float.valueOf(tempArr[3]), Float.valueOf(tempArr[4]),Float.valueOf(tempArr[5]));
+			if (len > 5) {
+				RatingSummary rs = new RatingSummary(tempArr[0], Long.getLong(tempArr[1]));
+				rs.createList(Float.valueOf(tempArr[2]), Float.valueOf(tempArr[3]), Float.valueOf(tempArr[4]),
+						Float.valueOf(tempArr[5]));
 				this.ratingStat.add(rs);
 			}
 		}
-        brs.close();
-        return this.ratingStat.size();
+		brs.close();
+		return this.ratingStat.size();
 	}
 
 	/**
 	 * 
 	 */
-	public boolean computeStats(){
-		//do not append, start from scratch
-		//implement method
+	public boolean computeStats() {
+		// do not append, start from scratch
+		// implement method
 		return true;
 	}
 
-	public String saveStats(){
+	public String saveStats() {
 
-		String statString = ""; 
-		//writing a rating summary in each line
+		String statString = "";
+		// writing a rating summary in each line
 		for (AbstractRatingSummary rs : this.getRatingStat()) {
 			statString += rs.toString();
 		}
@@ -125,27 +134,26 @@ public class Dataset {
 		this.numberOfRatings = numberOfRatings;
 	}
 
-	public int statsExist(){
+	public int statsExist() {
 		return ratingStat.size();
 	}
 
-	public List<Rating> getRatingList(){
+	public List<Rating> getRatingList() {
 		return this.ratingList;
 	}
-	
-	public List<AbstractRatingSummary> getRatingStat(){
+
+	public List<AbstractRatingSummary> getRatingStat() {
 		return this.ratingStat;
 	}
 
-
 	public void setRatingSummary(List<AbstractRatingSummary> ratingSummary) {
 		this.ratingStat = ratingSummary;
-	} 
+	}
 
 	@Override
-	public String toString(){
-		//"dataID,RAW_FILE,RATINGS_NO,STAT_FILE\n";
-		return (this.getDataId()+","+this.getRawFile().toString()+","+this.getNumberOfRatings()+",");	
+	public String toString() {
+		// "dataID,RAW_FILE,RATINGS_NO,STAT_FILE\n";
+		return (this.getDataId() + "," + this.getRawFile().toString() + "," + this.getNumberOfRatings() + ",");
 	}
 
 	private String dataId;
