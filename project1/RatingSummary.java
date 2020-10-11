@@ -93,7 +93,9 @@ public class RatingSummary extends AbstractRatingSummary{
 	 */
 	@Override
 	public String toString(){
-				//implement method	
+				//implement method
+				return "ID: " + id + ", degree: " + degree + ", product avg: " + productAvg + ", product st.dev: " + productStDev +
+				", reviewer avg: " + reviewerAvg + ", reviewer st.dev: " + reviewerStDev + "\n";	
 	}
 
 	private int printStats() {
@@ -139,6 +141,11 @@ public class RatingSummary extends AbstractRatingSummary{
 	public Float avgScore(){
 		
 		//implement method
+		//Himaja -understanding steps to implement this
+		// Product average - Reviewer average(biggest difference)
+		// Access 2nd column - specific product - find out all rows having that product. Get the ratings from column3 for each of those
+		// Access 1st column - specific reviewer - find out all products he reviewed. Get ratings from column3
+		// Compare these 2 and find the biggest difference
 	}
 
 	/** 

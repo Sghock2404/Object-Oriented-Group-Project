@@ -85,6 +85,7 @@ public class DatasetHandler{
 		Files.writeString(dbPath, content);
 	}
 
+	
 	/**
 	 * 
 	 * @param dataID
@@ -93,6 +94,10 @@ public class DatasetHandler{
 	public void printReport(final String dataID, int k){
 		
 		//implement method
+		String report = DataAnalysis.printReport(inList, k);
+		System.out.println(report);
+		Path reportPath = this.defineReportPath(dataID);
+		Files.writeString(reportPath, report);
 	}
 
 	/**
@@ -102,6 +107,7 @@ public class DatasetHandler{
 	public void saveStats(final String dataID){
 		
 		//implement method
+
 	}
 
 	//////////////////////PATH HANDLING METHODS//////////////////////////////////////
@@ -235,7 +241,7 @@ public class DatasetHandler{
 	 */
 	public Dataset getCollection(String dataID) throws IOException{
 		//implement method
-		return null;
+		
 	}
 
 	/**
