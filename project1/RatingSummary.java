@@ -47,6 +47,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev,
 			final float reviewerAvg, final float reviewerStDev) {
 		//implement constructor
+		super(id, degree); //don't know if this is necessary, but it got rid of error
 		this.id = id; 
 		this.degree = degree;
 		this.productAvg = productAvg;
@@ -182,13 +183,14 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public Float stDevScore() {
 		// implement method
+		return productStDev - reviewerStDev;
 	}
 
 	/**
 	 * @return summary of statistics as key to sorting the rating summaries
 	 */
 	public Float sortStats() {
-		// implement method
+		// implement method, just a return statement?
 	}
 
    //add methods if needed
