@@ -243,8 +243,8 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * 
 	 *				// each data attribute and its index within the list
 	 * 			productAvg : copyOfList.get(0);
-	 * 			productStDev : copyOfList.get(2);
-	 * 			reviewerAvg : copyOfList.get(1);
+	 * 			productStDev : copyOfList.get(1);
+	 * 			reviewerAvg : copyOfList.get(2);
 	 *				reviewerStDev : copyOfList.get(3)
 	 *    
 	 */			

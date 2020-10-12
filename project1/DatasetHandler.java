@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -253,8 +254,15 @@ public class DatasetHandler {
 	 * @throws IOException
 	 */
 	public Dataset getCollection(String dataID) throws IOException {
-		// implement method
-		return null;
+		Dataset current = null;
+		Iterator<Dataset> value = this.db.iterator();
+		while (value.hasNext()) {
+			current = value.next();
+			if (dataID.contains(current.getDataId())) {
+				return current;
+			}
+		}
+		return current;
 	}
 
 	/**
@@ -285,7 +293,10 @@ public class DatasetHandler {
 	 */
 	public boolean addCollection(final String dataID, final String input) {
 
-		// implement method
+		// Just throwing an idea out there - will work on later  - D
+		Stream.of(input.split(","))
+			.map(columnVal -> new String(columnVal))
+			.collect(Collectors.toList());
 		return true;
 	}
 
