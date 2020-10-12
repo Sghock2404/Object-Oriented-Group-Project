@@ -47,14 +47,11 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev,
 			final float reviewerAvg, final float reviewerStDev) {
-		//implement constructor
-		super(id, degree); //don't know if this is necessary, but it got rid of error
-		this.id = id; 
-		this.degree = degree;
-		this.productAvg = productAvg;
-		this.productStDev = productStDev;
-		this.reviewerAvg = reviewerAvg;
-		this.reviewerStDev = reviewerStDev;  
+		
+		//don't know if this is necessary, but it got rid of error
+		super(id, degree); 
+		// I think you're right Scott - I added initialization for the list attribute on top of what you did 
+		super.setList(this.createList(productAvg, productStDev, reviewerAvg, reviewerStDev));
 	}
 
 	/**
@@ -119,9 +116,11 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	@Override
 	public String toString() {
-		// implement method
+		// Just need to rewrite this in virtue of the constructor fixes.
+		// Should only take a few minutes (see bottom of file)
 		return "ID: " + id + ", degree: " + degree + ", product avg: " + productAvg + ", product st.dev: " + productStDev
 				+ ", reviewer avg: " + reviewerAvg + ", reviewer st.dev: " + reviewerStDev + "\n";
+
 	}
 
 	private int printStats() {
@@ -130,12 +129,17 @@ public class RatingSummary extends AbstractRatingSummary {
 	}
 
 	/**
-	 * collect the list that keeps statistics Make sure the object was initialized
+	 * collect the list that keeps statistics 
+	 * Make sure the object was initialized
+	 * 
+	 * @param rawRatings
 	 */
 	@Override
 	public void collectStats(final List<Rating> rawRatings) {
-		// implement method
-
+		if (rawRatings != null) {
+			collectProductStats(rawRatings);
+			collectReviewerStats(rawRatings);
+		}
 	}
 
 	/**
@@ -146,11 +150,10 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public void collectProductStats(final List<Rating> rawRatings) {
 		// implement method
-
 	}
 
 	/**
-	 * Collects product stats for nodeID -- never call this function directly, only
+	 * Collects reviewer stats for nodeID -- never call this function directly, only
 	 * through collectStats
 	 * 
 	 * @param rawRatings
@@ -169,8 +172,8 @@ public class RatingSummary extends AbstractRatingSummary {
 
 	public Float avgScore(){
 		
-		//implement method
-		//Himaja -understanding steps to implement this
+		// implement method
+		// Himaja -understanding steps to implement this
 		// Product average - Reviewer average(biggest difference)
 		// Access 2nd column - specific product - find out all rows having that product. Get the ratings from column3 for each of those
 		// Access 1st column - specific reviewer - find out all products he reviewed. Get ratings from column3
@@ -183,8 +186,16 @@ public class RatingSummary extends AbstractRatingSummary {
 	 *         collection
 	 */
 	public Float stDevScore() {
-		// implement method
-		return productStDev - reviewerStDev;
+		//updated implementation of Himaja's stDevScore from before using List/super methods
+		List<Float> statsList = super.getList();
+
+		// Making variables for readability
+		Float reviewerStDev = statsList.get(3);
+		Float productStDev = statsList.get(1);
+
+		// Computation
+		return reviewerStDev - productStDev;
+
 	}
 
 	/**
@@ -196,12 +207,24 @@ public class RatingSummary extends AbstractRatingSummary {
 		Collections.sort(stats.createList());
 	}
 
-   //add methods if needed
-	private final String id;
-	private final long degree;
-	private final float productAvg;
-	private final float productStDev;
-	private final float reviewerAvg;
-	private final float reviewerStDev;
-
+	/**
+	 * How to access data attributes (after fixing constructors)
+	 * 
+	 * degree - super.getDegree()
+	 * nodeID - super.getNodeID()
+	 * 
+	 * The attributes [productAvg, productStDev, reviewerAvg, reviewerStDev] are part of a list (statsList)
+	 * contained in the superclass "AbstractRatingSummary" - so we'll keep those values there (encapsulation)
+	 * 
+	 * 	one easy way to access:
+	 * 		// get list from super
+	 * 		List<Float> copyOfList = super.getList();
+	 * 
+	 *				// each data attribute and its index within the list
+	 * 			productAvg : copyOfList.get(0);
+	 * 			productStDev : copyOfList.get(2);
+	 * 			reviewerAvg : copyOfList.get(1);
+	 *				reviewerStDev : copyOfList.get(3)
+	 *    
+	 */			
 }

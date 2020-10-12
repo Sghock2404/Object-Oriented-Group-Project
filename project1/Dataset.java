@@ -1,7 +1,9 @@
 package project1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -96,12 +98,27 @@ public class Dataset {
 	}
 
 	/**
+	 * Create a RatingSummary object for each reviewerID 
+	 * available in ratingList and add them to ratingStat
 	 * 
+	 * @return computed
 	 */
 	public boolean computeStats() {
-		// do not append, start from scratch
-		// implement method
-		return true;
+
+		boolean computed = true;
+	
+		if (ratingList == null) computed = false;
+		
+		// Make a stream w/ ratingList. For each rating (row in dataset file), 
+		// get its reviewerID & make a list with these values. 
+		List<Rating> ListOfReviewerIDs = ratingList;
+		ListOfReviewerIDs
+			.stream()
+			.map(rating -> rating.getReviewerID()) 
+			.collect(Collectors.toList()) 		
+			.forEach(reviewerID -> ratingStat.add(new RatingSummary(reviewerID, ratingList)));
+		
+		return computed;
 	}
 
 	public String saveStats() {
@@ -156,9 +173,18 @@ public class Dataset {
 		return (this.getDataId() + "," + this.getRawFile().toString() + "," + this.getNumberOfRatings() + ",");
 	}
 
+	// the name of the data set file (video, music, small, test, etc.)
 	private String dataId;
+
+	// path to file (team, we won't need this)
 	private Path rawFile;
+
+	// number of rows in data set
 	private long numberOfRatings;
-	private List<Rating> ratingList;
-	private List<AbstractRatingSummary> ratingStat;
+
+	// column values of each row (reviewerID, productID, productRating)
+	private List<Rating> ratingList; 
+
+	// the values from RatingSummary (productAvg, productStDev, reviewerAvg, reviewerStDev)
+	private List<AbstractRatingSummary> ratingStat; 
 }
