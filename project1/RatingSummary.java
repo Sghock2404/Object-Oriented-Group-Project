@@ -2,6 +2,8 @@ package project1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
+
 
 /**
  * Ratings Summary supporting inner and outer statistics of the review
@@ -133,7 +135,9 @@ public class RatingSummary extends AbstractRatingSummary {
 	@Override
 	public void collectStats(final List<Rating> rawRatings) {
 		// implement method
+		
 
+		
 	}
 
 	/**
@@ -189,6 +193,8 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public Float sortStats() {
 		// implement method
+		RatingSummary stats = new RatingSummary(id, degree, productAvg, productStDev, reviewerAvg, reviewerStDev);
+		Collections.sort(stats.createList());
 	}
 
    //add methods if needed
