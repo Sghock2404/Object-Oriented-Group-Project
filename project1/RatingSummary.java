@@ -233,7 +233,11 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * @return summary of statistics as key to sorting the rating summaries
 	 */
 	public Float sortStats() {
-		// implement method, just a return statement?
+		// implement method, sorted the statList from the createList (I believe)
+		//along with the return of maxScore from both avgScore() and stDevScore. hope it looks good!
+		Collections.sort(createList());
+		Float maxScore = avgScore() + stDevScore();
+		return maxScore;
 		
 	}
 
