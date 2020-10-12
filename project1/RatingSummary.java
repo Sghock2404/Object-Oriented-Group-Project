@@ -119,8 +119,8 @@ public class RatingSummary extends AbstractRatingSummary {
 	public String toString() {
 		// Just need to rewrite this in virtue of the constructor fixes.
 		// Should only take a few minutes (see bottom of file)
-		return "ID: " + id + ", degree: " + degree + ", product avg: " + productAvg + ", product st.dev: " + productStDev
-				+ ", reviewer avg: " + reviewerAvg + ", reviewer st.dev: " + reviewerStDev + "\n";
+		//changed to getNodeID(), getDegree(), getList() with encapsulation because RatingSummary extends AbstractRatingSummary
+		return getNodeID() + " " + getDegree() + " " + getList();
 
 	}
 
@@ -193,10 +193,10 @@ public class RatingSummary extends AbstractRatingSummary {
 		// Access 1st column - specific reviewer - find out all products he reviewed. Get ratings from column3
 		// Compare these 2 and find the biggest difference
 		
-		// List<Float> statsList = super.getList();
+		List<Float> statsList = super.getList();
 
-		// Float reviewerAvg = statsList.get(2);
-		// Float productAvg = statsList.get(0);
+		Float reviewerAvg = statsList.get(2);
+		Float productAvg = statsList.get(0);
 
 		// Computation
 		return reviewerAvg - productAvg;
@@ -209,11 +209,11 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public Float stDevScore() {
 		// updated implementation of Scott's stDevScore from before using List/super methods
-		// List<Float> statsList = super.getList();
+		 List<Float> statsList = super.getList();
 
-		// Making variables for readability
-		// Float reviewerStDev = statsList.get(3);
-		// Float productStDev = statsList.get(1);
+		//Making variables for readability
+		Float reviewerStDev = statsList.get(3);
+		Float productStDev = statsList.get(1);
 
 		// Computation
 		return reviewerStDev - productStDev;
