@@ -120,13 +120,22 @@ public class RatingSummary extends AbstractRatingSummary {
 		// Just need to rewrite this in virtue of the constructor fixes.
 		// Should only take a few minutes (see bottom of file)
 		//changed to getNodeID(), getDegree(), getList() with encapsulation because RatingSummary extends AbstractRatingSummary
-		return getNodeID() + " " + getDegree() + " " + getList();
+		return getNodeID() + " " + getDegree() + " " + printStats();
 
 	}
 
-	private int printStats() {
+	private String printStats() {
 		// TODO Auto-generated method stub
-		return 0;
+		String stat = "";
+		if (getList().isEmpty()) {
+			stat = "product avg,product st.dev,reviewer avg,reviewer st.dev\n";
+		}
+		for (final Float s : getList()) {
+			stat = s + "\n";
+
+		}
+		System.out.println(stat);
+		return stat;
 	}
 
 	/**
