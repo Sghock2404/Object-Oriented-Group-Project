@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
-
 /**
  * Ratings Summary supporting inner and outer statistics of the review
  * 
@@ -49,6 +48,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev,
 			final float reviewerAvg, final float reviewerStDev) {
 		//implement constructor
+		super(id, degree); //don't know if this is necessary, but it got rid of error
 		this.id = id; 
 		this.degree = degree;
 		this.productAvg = productAvg;
@@ -135,9 +135,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	@Override
 	public void collectStats(final List<Rating> rawRatings) {
 		// implement method
-		
 
-		
 	}
 
 	/**
@@ -186,13 +184,14 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public Float stDevScore() {
 		// implement method
+		return productStDev - reviewerStDev;
 	}
 
 	/**
 	 * @return summary of statistics as key to sorting the rating summaries
 	 */
 	public Float sortStats() {
-		// implement method
+		// implement method, just a return statement?
 		RatingSummary stats = new RatingSummary(id, degree, productAvg, productStDev, reviewerAvg, reviewerStDev);
 		Collections.sort(stats.createList());
 	}
