@@ -3,6 +3,7 @@ package project1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * Ratings Summary supporting inner and outer statistics of the review
@@ -150,6 +151,13 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public void collectProductStats(final List<Rating> rawRatings) {
 		// implement method
+		//check for rows containing product ID and filtering out corresponding rating
+		for (final Rating pStat : rawRatings) {
+			if (super.getNodeID().equals(pStat.getProductID())) {
+				rawRatings.get(2);
+			}
+		}
+
 	}
 
 	/**
@@ -160,6 +168,12 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public void collectReviewerStats(final List<Rating> rawRatings) {
 		// implement method
+		//check for rows containing reviewer ID and filtering out corresponding rating
+		for (final Rating rStat : rawRatings) {
+			if (super.getNodeID().equals(rStat.getReviewerID())) {
+				rawRatings.get(2);
+			}
+		}
 
 	}
 
@@ -178,6 +192,14 @@ public class RatingSummary extends AbstractRatingSummary {
 		// Access 2nd column - specific product - find out all rows having that product. Get the ratings from column3 for each of those
 		// Access 1st column - specific reviewer - find out all products he reviewed. Get ratings from column3
 		// Compare these 2 and find the biggest difference
+		
+		// List<Float> statsList = super.getList();
+
+		// Float reviewerAvg = statsList.get(2);
+		// Float productAvg = statsList.get(0);
+
+		// Computation
+		return reviewerAvg - productAvg;
 
 	}
 	
@@ -203,8 +225,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	public Float sortStats() {
 		// implement method, just a return statement?
-		RatingSummary stats = new RatingSummary(id, degree, productAvg, productStDev, reviewerAvg, reviewerStDev);
-		Collections.sort(stats.createList());
+		
 	}
 
 	/**
