@@ -186,12 +186,12 @@ public class RatingSummary extends AbstractRatingSummary {
 	 *         collection
 	 */
 	public Float stDevScore() {
-		//updated implementation of Himaja's stDevScore from before using List/super methods
-		List<Float> statsList = super.getList();
+		// updated implementation of Scott's stDevScore from before using List/super methods
+		// List<Float> statsList = super.getList();
 
 		// Making variables for readability
-		Float reviewerStDev = statsList.get(3);
-		Float productStDev = statsList.get(1);
+		// Float reviewerStDev = statsList.get(3);
+		// Float productStDev = statsList.get(1);
 
 		// Computation
 		return reviewerStDev - productStDev;
