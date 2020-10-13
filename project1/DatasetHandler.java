@@ -326,11 +326,12 @@ public class DatasetHandler {
 	 * @return if the unique identifier is already there or no
 	 */
 	public boolean addCollection(final String dataID, final String input) {
-
-		// Just throwing an idea out there - will work on later  - D
-		Stream.of(input.split(","))
-			.map(columnVal -> new String(columnVal))
-			.collect(Collectors.toList());
+		try {
+		addStats(getCollection(dataID));
+		}
+		catch(Exception e) {
+			System.out.println("Error adding collection.");
+		}
 		return true;
 	}
 
