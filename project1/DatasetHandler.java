@@ -106,10 +106,12 @@ public class DatasetHandler {
 	public void printReport(final String dataID, int k) throws InvalidPathException, IOException {
 		
 		//implement method	
-			
-		List<AbstractRatingSummary> inList = ;
-		String report = DataAnalysis.printReport(inList, k);
-		System.out.println(report);
+		String report = " ";
+		List<AbstractRatingSummary> inList = getCollection(dataID).getRatingStat();
+		for (AbstractRatingSummary summary : inList) {
+			report += summary.toString() + "\n";
+			System.out.println(report);
+		}
 		Path reportPath = this.defineReportPath(dataID);
 		Files.writeString(reportPath, report);
 

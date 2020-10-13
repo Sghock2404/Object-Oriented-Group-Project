@@ -245,25 +245,4 @@ public class RatingSummary extends AbstractRatingSummary {
 		return maxScore;
 		
 	}
-
-	/**
-	 * How to access data attributes (after fixing constructors)
-	 * 
-	 * degree - super.getDegree()
-	 * nodeID - super.getNodeID()
-	 * 
-	 * The attributes [productAvg, productStDev, reviewerAvg, reviewerStDev] are part of a list (statsList)
-	 * contained in the superclass "AbstractRatingSummary" - so we'll keep those values there (encapsulation)
-	 * 
-	 * 	one easy way to access:
-	 * 		// get list from super
-	 * 		List<Float> copyOfList = super.getList();
-	 * 
-	 *				// each data attribute and its index within the list
-	 * 			productAvg : copyOfList.get(0);
-	 * 			productStDev : copyOfList.get(1);
-	 * 			reviewerAvg : copyOfList.get(2);
-	 *				reviewerStDev : copyOfList.get(3)
-	 *    
-	 */			
 }
