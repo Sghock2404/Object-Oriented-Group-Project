@@ -331,12 +331,16 @@ public class DatasetHandler {
 	 */
 	public boolean addCollection(final String dataID, final String input) {
 		try {
-		addStats(getCollection(dataID));
+			if(!checkID(dataID)) {
+				Dataset newData = new Dataset(dataID, defineRawPath(input));
+				return addDataset(newData);
+			}
 		}
-		catch(Exception e) {
-			System.out.println("Error adding collection.");
+		catch(IOException e) {
+			System.out.println("Error - would print stack trace but it's long");
+			return false;
 		}
-		return true;
+		return false;
 	}
 
 	private final Set<Dataset> db;
