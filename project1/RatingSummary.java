@@ -3,7 +3,7 @@ package project1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
-import java.util.stream.Collectors;
+
 
 /**
  * Ratings Summary supporting inner and outer statistics of the review
@@ -124,7 +124,7 @@ public class RatingSummary extends AbstractRatingSummary {
 
 	}
 
-	private String printStats() {
+	public String printStats() {
 		// TODO Auto-generated method stub
 		String stat = "";
 		if (getList().isEmpty()) {

@@ -120,6 +120,15 @@ public class DatasetHandler {
 	public void saveStats(final String dataID) {
 
 		// implement method
+		
+		String saveStat = "";
+		RatingSummary stat = new RatingSummary(inNodeID, inDegree, inList);
+		// writing a rating summary in each line
+		for (Float ss : stat.createList(productAvg, productStDev, reviewerAvg, reviewerStDev)) {
+			saveStat += ss.toString();
+		}
+		Path statPath = this.defineStatPath(dataID);
+		Files.writeString(statPath, saveStat);
 	}
 
 	////////////////////// PATH HANDLING

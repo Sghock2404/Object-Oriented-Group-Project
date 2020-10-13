@@ -60,7 +60,7 @@ public class Dataset {
 		String line;
 		while ((line = br.readLine()) != null) {
 			String[] tempArr = line.split(DataAnalysis.DELIMITER);
-			Rating r = new Rating(tempArr[0], tempArr[1], Integer.getInteger(tempArr[2]));
+			Rating r = new Rating(tempArr[0],tempArr[1], Float.parseFloat(tempArr[2]));
 			this.ratingList.add(r);
 		}
 		br.close();
