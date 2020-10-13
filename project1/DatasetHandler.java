@@ -104,7 +104,9 @@ public class DatasetHandler {
 
 	public void printReport(final String dataID, int k){
 		
-		//implement method
+		//implement method	
+			
+		List<AbstractRatingSummary> inList;
 		String report = DataAnalysis.printReport(inList, k);
 		System.out.println(report);
 		Path reportPath = this.defineReportPath(dataID);
@@ -121,7 +123,7 @@ public class DatasetHandler {
 
 		// implement method
 		String saveStat = "";
-		RatingSummary stat = new RatingSummary(inNodeID, inDegree, inList);
+		RatingSummary stat = new RatingSummary(stat.getNodeID(), stat.getDegree(), stat.getList());
 		// writing a rating summary in each line
 		for (Float ss : stat.createList(productAvg, productStDev, reviewerAvg, reviewerStDev)) {
 			saveStat += ss.toString();
