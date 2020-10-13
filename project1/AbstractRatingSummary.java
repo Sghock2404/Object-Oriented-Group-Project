@@ -3,11 +3,14 @@ package project1;
 import java.util.List;
 
 /**
- * Abstract Rating Summary 
- * Contains RatingID, nodeDegree, and List of Objects capturing statistics
-    @author tesic
+ * Abstract Rating Summary Contains RatingID, nodeDegree, and List of Objects
+ * capturing statistics
+ * 
+ * @author Himaja
+ * @author Scott
+ * @author Daniel
  */
-public abstract class AbstractRatingSummary implements Comparable<AbstractRatingSummary>{
+public abstract class AbstractRatingSummary implements Comparable<AbstractRatingSummary> {
 
     /**
      * 
@@ -44,42 +47,42 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Setter method for inDegree
      * @param inDegree
      */
-    public void setDegree(long inDegree){
+    public void setDegree(long inDegree) {
         this.degree = inDegree;
     }
-    
+
     /**
-     * 
+     * Getter method for nodeID
      * @return nodeID
      */
     public String getNodeID() {
-		return nodeID;
-	}
-    
+        return nodeID;
+    }
+
     /**
-     * 
+     * Getter method for degree
      * @return degree
      */
-	public long getDegree() {
-		return degree;
-	}
+    public long getDegree() {
+        return degree;
+    }
 
-	/**
-     * 
+    /**
+     * Setter method for degree
      * @param inRatings
      */
-    public void setDegree(final List<Rating> inRatings){
+    public void setDegree(final List<Rating> inRatings) {
 
         long count = 0;
-        for(final Rating ir: inRatings){
-            if (this.nodeID.equals(ir.getReviewerID())||this.nodeID.equals(ir.getProductID())){
+        for (final Rating ir : inRatings) {
+            if (this.nodeID.equals(ir.getReviewerID()) || this.nodeID.equals(ir.getProductID())) {
                 count++;
             }
         }
-        this.degree = count; 
+        this.degree = count;
 
     }
 
@@ -90,7 +93,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     public abstract List<Float> createList();
 
     /**
-     * 
+     * Setter method for newList
      * @param newList
      */
     public void setList(final List<Float> newList) {
@@ -98,7 +101,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Getter method for statList
      * @return list reference to specific list object for subclasses
      */
     public List<Float> getList() {
@@ -106,20 +109,20 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     ///////////////////////////////////////////////////////////////////
-    ///// abstract method block for computing stats on abstract objects 
-    
+    ///// abstract method block for computing stats on abstract objects
+
     /**
-     * Defines what it means to have rogue score 
+     * Defines what it means to have rogue score
      */
     public abstract Float avgScore();
 
-      /**
-     * Defines what it means to have agreement score 
+    /**
+     * Defines what it means to have agreement score
      */
     public abstract Float stDevScore();
-    
+
     /**
-     * Summarizes list of stats for natural ordering 
+     * Summarizes list of stats for natural ordering
      */
     public abstract Float sortStats();
 
@@ -130,42 +133,41 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
      */
     public abstract void collectStats(final List<Rating> rawRatings);
 
-
     /**
-	 * /**
-     * Overrides equals so that subclass collections sort on Stats values 
-     * Make sure that all subclasses implement similar sorting strategy
-	 * @param inRating
-	 * @return
-	 */
-	public int compareTo(AbstractRatingSummary inStat){
+     * /** Overrides equals so that subclass collections sort on Stats values Make
+     * sure that all subclasses implement similar sorting strategy
+     * 
+     * @param inRating
+     * @return
+     */
+    public int compareTo(AbstractRatingSummary inStat) {
 
-		if (this == inStat ){
-            return 0; 
-        }else{
+        if (this == inStat) {
+            return 0;
+        } else {
             return this.sortStats().compareTo(inStat.sortStats());
-		}
+        }
     }
- 
+
     /**
-     * Overrides equals so that subclass collections sort on Stats values 
-     * Make sure that all subclasses implement similar sorting strategy
+     * Overrides equals so that subclass collections sort on Stats values Make sure
+     * that all subclasses implement similar sorting strategy
      */
     @Override
-    public boolean equals(Object obj){
-        if (this == obj){
-            return true; 
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        if (obj instanceof AbstractRatingSummary){
+        if (obj instanceof AbstractRatingSummary) {
             float temp = ((AbstractRatingSummary) obj).sortStats();
-            if (this.sortStats()==temp){
+            if (this.sortStats() == temp) {
                 return true;
             }
         }
-        return false; 
+        return false;
     }
 
     private final String nodeID;
-    private long degree; 
+    private long degree;
     private List<Float> statList;
 }
