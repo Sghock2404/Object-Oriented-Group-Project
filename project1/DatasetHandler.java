@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.*;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.FileSystems;
@@ -98,15 +96,18 @@ public class DatasetHandler {
 	
 	/**
 	 * Prints report
+	 * 
 	 * @param dataID
 	 * @param k
+	 * @throws IOException
+	 * @throws InvalidPathException
 	 */
 
-	public void printReport(final String dataID, int k){
+	public void printReport(final String dataID, int k) throws InvalidPathException, IOException {
 		
 		//implement method	
 			
-		List<AbstractRatingSummary> inList;
+		List<AbstractRatingSummary> inList = ;
 		String report = DataAnalysis.printReport(inList, k);
 		System.out.println(report);
 		Path reportPath = this.defineReportPath(dataID);
@@ -118,18 +119,17 @@ public class DatasetHandler {
 	 * Saves computed statistics into a file
 	 * 
 	 * @param dataID
+	 * @throws IOException
 	 */
-	public void saveStats(final String dataID) {
+	public void saveStats(final String dataID) throws IOException {
 
 		// implement method
-		String saveStat = "";
-		RatingSummary stat = new RatingSummary(stat.getNodeID(), stat.getDegree(), stat.getList());
-		// writing a rating summary in each line
-		for (Float ss : stat.createList(productAvg, productStDev, reviewerAvg, reviewerStDev)) {
-			saveStat += ss.toString();
-		}
+		Dataset ss = null;
+		
+		ss = getCollection(dataID);
+		ss.getRatingStat();
 		Path statPath = this.defineStatPath(dataID);
-		Files.writeString(statPath, saveStat);
+		Files.writeString(statPath, ss.toString());
 	}
 
 	////////////////////// PATH HANDLING
