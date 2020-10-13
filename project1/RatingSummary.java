@@ -99,7 +99,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * @param productStDev
 	 * @param reviewerAvg
 	 * @param reviewerStDev
-	 * @return
+	 * @return newList
 	 */
 	public List<Float> createList(float productAvg, float productStDev, float reviewerAvg, float reviewerStDev) {
 		List<Float> newList = createList();		
@@ -114,15 +114,20 @@ public class RatingSummary extends AbstractRatingSummary {
 	/**
 	 * Prints RatingSummary object as form Id,degree,product avg,product
 	 * st.dev,reviewer avg,reviewer st.dev\n
+	 * @return String with NodeID, degree, product avg, product st.dev, reviewer avg, reviewer st.dev
 	 */
 	@Override
 	public String toString() {
 		// Just need to rewrite this in virtue of the constructor fixes.
 		// Should only take a few minutes (see bottom of file)
 		//changed to getNodeID(), getDegree(), getList() with encapsulation because RatingSummary extends AbstractRatingSummary
-		return getNodeID() + " " + getDegree() + " " + printStats();
+		return getNodeID() + ", " + getDegree() + ", " + printStats();
 
 	}
+	/**
+	 * Prints printStats
+	 * @return String stat
+	 */
 
 	public String printStats() {
 		// TODO Auto-generated method stub

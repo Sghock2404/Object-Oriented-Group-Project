@@ -35,7 +35,7 @@ public class DatasetHandler {
 	}
 
 	/**
-	 * 
+	 * @throws IOException
 	 */
 	public void loadDB() throws IOException {
 
@@ -68,8 +68,8 @@ public class DatasetHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * prints String of Set<Dataset> db
+	 * @return content
 	 */
 	public String printDB() {
 
@@ -97,7 +97,7 @@ public class DatasetHandler {
 
 	
 	/**
-	 * 
+	 * Prints report
 	 * @param dataID
 	 * @param k
 	 */
@@ -142,8 +142,8 @@ public class DatasetHandler {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Getter method for dbPath
+	 * @return dbPath
 	 * @throws InvalidPathException
 	 */
 	public Path getDbPath() throws InvalidPathException {
@@ -160,7 +160,7 @@ public class DatasetHandler {
 	}
 
 	/**
-	 * 
+	 * Getter method for datasets
 	 * @return int number of dataset entries
 	 */
 	public int getDataSets() {

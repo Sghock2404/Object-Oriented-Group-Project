@@ -47,7 +47,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Setter method for inDegree
      * @param inDegree
      */
     public void setDegree(long inDegree) {
@@ -55,7 +55,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Getter method for nodeID
      * @return nodeID
      */
     public String getNodeID() {
@@ -63,7 +63,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Getter method for degree
      * @return degree
      */
     public long getDegree() {
@@ -71,7 +71,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Setter method for degree
      * @param inRatings
      */
     public void setDegree(final List<Rating> inRatings) {
@@ -93,7 +93,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     public abstract List<Float> createList();
 
     /**
-     * 
+     * Setter method for newList
      * @param newList
      */
     public void setList(final List<Float> newList) {
@@ -101,7 +101,7 @@ public abstract class AbstractRatingSummary implements Comparable<AbstractRating
     }
 
     /**
-     * 
+     * Getter method for statList
      * @return list reference to specific list object for subclasses
      */
     public List<Float> getList() {

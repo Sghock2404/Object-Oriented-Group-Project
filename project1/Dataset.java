@@ -119,7 +119,10 @@ public class Dataset {
 		
 		return computed;
 	}
-
+	/**
+	 * Prints a string of stats
+	 * @return statString
+	 */
 	public String saveStats() {
 
 		String statString = "";
@@ -129,38 +132,74 @@ public class Dataset {
 		}
 		return statString;
 	}
+	/**
+	 * Getter method for dataID
+	 * @return dataID
+	 */
 
 	public String getDataId() {
 		return dataId;
 	}
+	/**
+	 * Setter method for dataID
+	 * @param dataId
+	 */
 
 	public void setDataId(String dataId) {
 		this.dataId = dataId;
 	}
+	/**
+	 * Getter method for rawFile
+	 * @return rawFile
+	 */
 
 	public Path getRawFile() {
 		return this.rawFile;
 	}
+	/**
+	 * Getter method for numerOfRatings
+	 * @return numberOfRatings
+	 */
 
 	public long getNumberOfRatings() {
 		return numberOfRatings;
 	}
+	/**
+	 * Setter method for numerOfRatings
+	 * @param numberOfRatings
+	 */
 
 	public void setNumberOfRatings(long numberOfRatings) {
 		this.numberOfRatings = numberOfRatings;
 	}
+	/**
+	 * Method for statsExist
+	 * @return size of ratingStat
+	 */
 
 	public int statsExist() {
 		return ratingStat.size();
 	}
+	/**
+	 * Getter method for List<Rating> ratingList
+	 * @return ratingList
+	 */
 
 	public List<Rating> getRatingList() {
 		return this.ratingList;
 	}
+	/**
+	 * Getter method for ratingStat
+	 * @return ratingStat
+	 */
 
 	public List<AbstractRatingSummary> getRatingStat() {
 		return this.ratingStat;
 	}
+	/**
+	 * Setter method for ratingSummary
+	 * @param ratingSummary
+	 */
 
 	public void setRatingSummary(List<AbstractRatingSummary> ratingSummary) {
 		this.ratingStat = ratingSummary;
