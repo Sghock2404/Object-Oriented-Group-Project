@@ -5,6 +5,8 @@ import java.util.Scanner;
 /**
  * Provides functionality for interacting with the user, main class
  * 
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel

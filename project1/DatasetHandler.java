@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.FileSystems;
@@ -14,6 +13,8 @@ import java.nio.file.Path;
 /**
  * Handles datasets
  * 
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel
@@ -103,7 +104,7 @@ public class DatasetHandler {
 	 * @throws InvalidPathException
 	 */
 
-	public void printReport(final String dataID, int k) throws InvalidPathException, IOException {
+	public void printReport(final String dataID, int k) throws IOException {
 		
 		//implement method	
 		String report = " ";

@@ -7,7 +7,9 @@ import java.util.Collections;
 
 /**
  * Ratings Summary supporting inner and outer statistics of the review
- * 
+ *  
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel
@@ -49,9 +51,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	public RatingSummary(final String id, final long degree, final float productAvg, final float productStDev,
 			final float reviewerAvg, final float reviewerStDev) {
 		
-		//don't know if this is necessary, but it got rid of error
 		super(id, degree); 
-		// I think you're right Scott - I added initialization for the list attribute on top of what you did 
 		super.setList(this.createList(productAvg, productStDev, reviewerAvg, reviewerStDev));
 	}
 
@@ -118,19 +118,17 @@ public class RatingSummary extends AbstractRatingSummary {
 	 */
 	@Override
 	public String toString() {
-		// Just need to rewrite this in virtue of the constructor fixes.
-		// Should only take a few minutes (see bottom of file)
-		//changed to getNodeID(), getDegree(), getList() with encapsulation because RatingSummary extends AbstractRatingSummary
+		
 		return getNodeID() + ", " + getDegree() + ", " + printStats();
 
 	}
 	/**
-	 * Prints printStats
+	 * Prints computed statistics
 	 * @return String stat
 	 */
 
 	public String printStats() {
-		// TODO Auto-generated method stub
+		
 		String stat = "";
 		if (getList().isEmpty()) {
 			stat = "product avg,product st.dev,reviewer avg,reviewer st.dev\n";
@@ -164,7 +162,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * @param rawRatings
 	 */
 	public void collectProductStats(final List<Rating> rawRatings) {
-		// implement method
+		
 		//check for rows containing product ID and filtering out corresponding rating
 		for (final Rating pStat : rawRatings) {
 			if (super.getNodeID().equals(pStat.getProductID())) {
@@ -181,7 +179,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * @param rawRatings
 	 */
 	public void collectReviewerStats(final List<Rating> rawRatings) {
-		// implement method
+		
 		//check for rows containing reviewer ID and filtering out corresponding rating
 		for (final Rating rStat : rawRatings) {
 			if (super.getNodeID().equals(rStat.getReviewerID())) {
@@ -200,20 +198,13 @@ public class RatingSummary extends AbstractRatingSummary {
 
 	public Float avgScore(){
 		
-		// implement method
-		// Himaja -understanding steps to implement this
-		// Product average - Reviewer average(biggest difference)
-		// Access 2nd column - specific product - find out all rows having that product. Get the ratings from column3 for each of those
-		// Access 1st column - specific reviewer - find out all products he reviewed. Get ratings from column3
-		// Compare these 2 and find the biggest difference
-		
 		List<Float> statsList = super.getList();
 
 		Float reviewerAvg = statsList.get(2);
 		Float productAvg = statsList.get(0);
 
 		// Computation
-		return reviewerAvg - productAvg;
+		return (reviewerAvg - productAvg);
 
 	}
 	
@@ -222,8 +213,8 @@ public class RatingSummary extends AbstractRatingSummary {
 	 *         collection
 	 */
 	public Float stDevScore() {
-		// updated implementation of Scott's stDevScore from before using List/super methods
-		 List<Float> statsList = super.getList();
+
+		List<Float> statsList = super.getList();
 
 		//Making variables for readability
 		Float reviewerStDev = statsList.get(3);
@@ -238,8 +229,7 @@ public class RatingSummary extends AbstractRatingSummary {
 	 * @return summary of statistics as key to sorting the rating summaries
 	 */
 	public Float sortStats() {
-		// implement method, sorted the statList from the createList (I believe)
-		//along with the return of maxScore from both avgScore() and stDevScore. hope it looks good!
+		
 		Collections.sort(createList());
 		Float maxScore = avgScore() + stDevScore();
 		return maxScore;

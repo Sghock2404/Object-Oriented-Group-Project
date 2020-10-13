@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 /**
  * Inventory of the datasets in DATA_FILE_FOLDER, kept in DATA_FILE_NAME
  * 
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel
@@ -51,7 +53,7 @@ public class DataAnalysis {
 	 *         most
 	 */
 	public static List sortByStDevDiff(List<AbstractRatingSummary> inList) {
-		// implement method!!!
+		
 		Collections.sort(inList, new Comparator<AbstractRatingSummary>() {
 			public int compare(AbstractRatingSummary r1, AbstractRatingSummary r2) {
 				return Float.compare(r1.stDevScore(), r2.stDevScore());

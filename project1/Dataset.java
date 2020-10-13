@@ -12,6 +12,8 @@ import java.nio.file.Path;
 /**
  * Dataset Object
  * 
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel
@@ -63,7 +65,9 @@ public class Dataset {
 			Rating r = new Rating(tempArr[0],tempArr[1], Float.parseFloat(tempArr[2]));
 			this.ratingList.add(r);
 		}
+	
 		br.close();
+		
 		return this.ratingList.size();
 	}
 

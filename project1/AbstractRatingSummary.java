@@ -6,6 +6,8 @@ import java.util.List;
  * Abstract Rating Summary Contains RatingID, nodeDegree, and List of Objects
  * capturing statistics
  * 
+ * @author Tesic
+ * @author Tarek
  * @author Himaja
  * @author Scott
  * @author Daniel
