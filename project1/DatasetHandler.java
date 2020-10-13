@@ -120,7 +120,6 @@ public class DatasetHandler {
 	public void saveStats(final String dataID) {
 
 		// implement method
-		
 		String saveStat = "";
 		RatingSummary stat = new RatingSummary(inNodeID, inDegree, inList);
 		// writing a rating summary in each line
@@ -238,22 +237,48 @@ public class DatasetHandler {
 	 * Saves computed statistics into a file
 	 * 
 	 * @param inData
+	 * @return false if statistics do not save in file
 	 */
 	public boolean addRatings(Dataset inData) {
 		// assume element is initialized with dataID and path to raw data
 		// implement method
-		return true;
+		boolean found = false;
+		if(Files.exists(inData.getRawFile())) {
+			found = addDataset(inData);
+		}
+		try {
+			Path statPath = defineStatPath(inData.getDataId());
+			if (Files.exists(statPath)) {
+				found = found || addStats(inData);
+			}
+		} catch (Exception e) {
+			System.out.println("Saved computed statistics in file failed");
+		}
+		return found;
 	}
 
 	/**
 	 * Saves computed statistics into a file
 	 * 
 	 * @param inData
+	 * @return false if statistics do not save in file
 	 */
 	public boolean addStats(Dataset inData) {
 		// assume element is initialized with dataID and path to raw data
 		// implement method
-		return true;
+		boolean found = false;
+		if(Files.exists(inData.getRawFile())) {
+			found = addDataset(inData);
+		}
+		try {
+			Path statPath = defineStatPath(inData.getDataId());
+			if (Files.exists(statPath)) {
+				found = found || addStats(inData);
+			}
+		} catch (Exception e) {
+			System.out.println("Saved computed statistics in file failed");
+		}
+		return found;
 	}
 
 	/**
