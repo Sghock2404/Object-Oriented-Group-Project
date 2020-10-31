@@ -1,15 +1,13 @@
 package project2;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import project1.RatingSummary;
 
 class RatingSummaryTest {
 
@@ -33,20 +31,30 @@ class RatingSummaryTest {
 	@Test
 	void testSetDegreeLong() {
 		rs.setDegree(3);
-		Assertions.assertEquals(rs.getDegree(), 3);
+		Assertions.assertEquals(3,rs.getDegree());
 	}
 
 	@Test
 	void testSetListFloat() {
 		List<Float> actual = Arrays.asList(2.0f, 2.0f, 2.0f, 2.0f);
-		rs.setList(2.0f, 2.0f, 2.0f, 2.0f);
+		rs.setList(2, 2, 2, 2);
 
 		Assertions.assertTrue(actual.equals(rs.getList()));
 
 	}
 
-	
+	@Test
+	void testAvgScore() {
+		rs.setList(4, 1, 4, 0);
+		Float avgScore = rs.getList().get(1) - rs.getList().get(3);
+		assertEquals(1, avgScore); 
+	}
 
-
+	@Test
+	void testStDevScore() {
+		rs.setList(5, 1, 3, 0);
+		Float stDevScore = rs.getList().get(0) - rs.getList().get(2);
+		assertEquals(2, stDevScore);	
+	}
 
 }
