@@ -57,4 +57,10 @@ class RatingSummaryTest {
 		assertEquals(2, stDevScore);	
 	}
 
+	@Test
+	void testCalculateSD() {
+		List<? extends Number> nums = Arrays.asList(1, 2, 3, 4);
+		assertEquals(1.2247449159622192, rs.calculateSD(nums, 2));
+	}
+
 }
