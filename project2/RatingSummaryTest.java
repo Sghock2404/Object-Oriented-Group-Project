@@ -62,5 +62,27 @@ class RatingSummaryTest {
 		List<? extends Number> nums = Arrays.asList(1, 2, 3, 4);
 		assertEquals(1.2247449159622192, rs.calculateSD(nums, 2));
 	}
+	
+	@Test
+	void testCreateList() {
+		List<Float> test = rs.createList(5.0f, 4.0f, 3.0f, 1.2f);
+		assertEquals(5.0f, test.get(0));
+		assertEquals(4.0f, test.get(1));
+		assertEquals(3.0f, test.get(2));
+		assertEquals(1.2f, test.get(3));
+	}
+
+	@Test
+	void testMultipleListMutations() {
+		// Using arbitrary values
+		rs.setList(9999, 9999, 9999, 9999);
+		rs.setList(-9999, -9999, -9999, -9999);
+		rs.setList(3, 7, 2, 2);
+		rs.setList(-22, 2, 5, 2);
+		rs.setList(9999, 1, 2, 2);
+		List<Float> test = rs.getList();
+		assertEquals(9999, test.get(0));
+	}
+
 
 }
