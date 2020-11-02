@@ -84,5 +84,20 @@ class RatingSummaryTest {
 		assertEquals(9999, test.get(0));
 	}
 
+	@Test
+	void testSortStats() {
+		rs.setList(3, 4, 1, 2);
+		assertEquals(4, rs.sortStats());
+	}
+
+	@Test
+	void testAvgScoreWithMultipleMutations() {
+		rs.setList(4, 1, 4, 0);
+		rs.setList(2, 1, 1, 1);
+		rs.setList(5, 1, 10, 0);
+		rs.setList(2, 1, 3, 11);
+		Float avgScore = rs.getList().get(1) - rs.getList().get(3);
+		assertEquals(-10, avgScore); 
+	}
 
 }

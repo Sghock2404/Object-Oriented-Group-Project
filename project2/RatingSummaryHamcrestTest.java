@@ -35,4 +35,20 @@ public class RatingSummaryHamcrestTest {
     assertThat(rs.getNodeID(), startsWith("B"));
   }
 
+  @Test
+  public void testTwoSimilarEntriesAreNotTheSameInstance() {
+    RatingSummary rs1 = new RatingSummary("B000GFDAUG", 2);
+    RatingSummary rs2 = new RatingSummary("B000GFDAUG", 2);
+    assertThat(rs1, not(sameInstance(rs2)));
+  }
+
+  @Test
+  public void checkIfConstructorWithAllParametersInitializesCorrectly() {
+    RatingSummary rs1 = new RatingSummary("B000GFDAUG", 2, 4f, 4f, 4f, 4f);
+    assertThat(rs1.getDegree(), is(notNullValue()));
+    assertThat(rs1.getList().get(0), is(notNullValue()));
+    assertThat(rs1.getList().get(1), is(notNullValue()));
+    assertThat(rs1.getList().get(2), is(notNullValue()));
+    assertThat(rs1.getList().get(3), is(notNullValue()));
+  }
 } 
