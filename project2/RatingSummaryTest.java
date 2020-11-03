@@ -103,6 +103,12 @@ class RatingSummaryTest {
 		rs.setList(3, 4, 1, 2);
 		assertEquals(4, rs.sortStats());
 	}
+	
+	@Test
+	void testSortStats2() {
+		rs.setList(1, 1, 1, 1);
+		assertEquals(1, rs.sortStats());
+	}
 
 	@Test
 	void testAvgScoreWithMultipleMutations() {
