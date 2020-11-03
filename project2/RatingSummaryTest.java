@@ -1,18 +1,26 @@
 package project2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import jdk.jfr.Timestamp;
+
+/**
+ * Unit tests for RatingSummary class
+ * 
+ * @author Himaja
+ * @author Scott
+ * @author Daniel
+ */
+
 class RatingSummaryTest {
 
 	public RatingSummary rs;
-	
+
 	@BeforeEach
 	public void setup() {
 		rs = new RatingSummary("A1EE2E3N7PW666", 2);
@@ -26,12 +34,18 @@ class RatingSummaryTest {
 		Assertions.assertTrue(actualOutput.equals(rs.toString()));
 	}
 
+	@Test
+	void testRatingSummaryStringLongFloat() {
+		String output = "A00019103H5DUGXXX2UPR, 1, 4.0, 1.0, 3.0, 0\n";
+		rs.setList(4, 1, 3, 0);
+		Assertions.assertFalse(output.equals(rs.toString()));
+	}
 
 	// From class AbstractRatingSummary
 	@Test
 	void testSetDegreeLong() {
 		rs.setDegree(3);
-		Assertions.assertEquals(3,rs.getDegree());
+		Assertions.assertEquals(3, rs.getDegree());
 	}
 
 	@Test
@@ -47,14 +61,14 @@ class RatingSummaryTest {
 	void testAvgScore() {
 		rs.setList(4, 1, 4, 0);
 		Float avgScore = rs.getList().get(1) - rs.getList().get(3);
-		assertEquals(1, avgScore); 
+		assertEquals(1, avgScore);
 	}
 
 	@Test
 	void testStDevScore() {
 		rs.setList(5, 1, 3, 0);
 		Float stDevScore = rs.getList().get(0) - rs.getList().get(2);
-		assertEquals(2, stDevScore);	
+		assertEquals(2, stDevScore);
 	}
 
 	@Test
@@ -62,7 +76,7 @@ class RatingSummaryTest {
 		List<? extends Number> nums = Arrays.asList(1, 2, 3, 4);
 		assertEquals(1.2247449159622192, rs.calculateSD(nums, 2));
 	}
-	
+
 	@Test
 	void testCreateList() {
 		List<Float> test = rs.createList(5.0f, 4.0f, 3.0f, 1.2f);
@@ -97,7 +111,7 @@ class RatingSummaryTest {
 		rs.setList(5, 1, 10, 0);
 		rs.setList(2, 1, 3, 11);
 		Float avgScore = rs.getList().get(1) - rs.getList().get(3);
-		assertEquals(-10, avgScore); 
+		assertEquals(-10, avgScore);
 	}
 
 }
