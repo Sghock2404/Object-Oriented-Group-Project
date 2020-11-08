@@ -63,3 +63,5 @@ Scott, Himaja, Daniel
 * Customers type their info and message
 * Customers need an account to create a message (Use Case: Add Customer to Database)
 * Message placed in messages queue
+
+![UseCaseDiagram](ADS/HW7/images/UseCaseDiagram1.png)
