@@ -65,3 +65,9 @@ Scott, Himaja, Daniel
 * Message placed in messages queue
 
 ![UseCaseDiagram](images/UseCaseDiagram1.png)
+
+### 2. CRC Cards and Class Diagram
+
+![Class Diagram](images/Class Diagram.png)
+
+
