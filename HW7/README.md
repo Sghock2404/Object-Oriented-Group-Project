@@ -72,7 +72,7 @@ Scott, Himaja, Daniel
 
 ### 3. Sequence Diagram for new shipping transaction
 
-**The sequence diagram below shows the sequence of operations for an employee to create 
-**a new shipping transaction and collect the package from the customer.
+The sequence diagram below shows the sequence of operations for an employee to create 
+new shipping transaction and collect the package from the customer.
 
 ![SequenceDiagram](images/SequenceDiagram.png)
