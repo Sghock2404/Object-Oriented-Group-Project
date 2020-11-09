@@ -68,6 +68,11 @@ Scott, Himaja, Daniel
 
 ### 2. CRC Cards and Class Diagram
 
-![Class Diagram](images/Class Diagram.png)
+![ClassDiagram](images/ClassDiagram.png)
 
+### 3. Sequence Diagram for new shipping transaction
 
+The sequence diagram below shows the sequence of operations for an employee to create 
+new shipping transaction and collect the package from the customer.
+
+![SequenceDiagram](images/SequenceDiagram.png)
