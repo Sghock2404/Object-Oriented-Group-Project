@@ -67,7 +67,8 @@ Scott, Himaja, Daniel
 ![UseCaseDiagram](images/UseCaseDiagram1.png)
 
 ### 2. CRC Cards and Class Diagram
-
+![crcCard1](images/crcCard1.JPG)
+![crcCard2](images/crcCard2.JPG)
 ![ClassDiagram](images/ClassDiagram.png)
 
 ### 3. Sequence Diagram for new shipping transaction
