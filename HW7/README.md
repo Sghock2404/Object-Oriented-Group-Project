@@ -64,4 +64,4 @@ Scott, Himaja, Daniel
 * Customers need an account to create a message (Use Case: Add Customer to Database)
 * Message placed in messages queue
 
-![UseCaseDiagram](HW7/images/UseCaseDiagram1.png)
+![UseCaseDiagram](images/UseCaseDiagram1.png)
