@@ -68,6 +68,6 @@ Scott, Himaja, Daniel
 
 ### 2. CRC Cards and Class Diagram
 
-![Class Diagram](images/Class Diagram.png)
+![ClassDiagram](images/ClassDiagram.png)
 
 
