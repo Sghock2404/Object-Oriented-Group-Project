@@ -1,6 +1,6 @@
 # ADS
 Scott, Himaja, Daniel
-###  1. Use Cases and Use Case 
+###  1. Use Cases 
 ---
 
 **Use Case: Manage Shipping Packages**
