@@ -1,6 +1,6 @@
 # ADS
 Scott, Himaja, Daniel
-###  1. Use Cases 
+###  1. Use Cases and Use Case 
 ---
 
 **Use Case: Manage Shipping Packages**
@@ -77,3 +77,11 @@ The sequence diagram below shows the sequence of operations for an employee to c
 new shipping transaction and collect the package from the customer.
 
 ![SequenceDiagram](images/SequenceDiagram.png)
+
+### 4. State Machine Diagram of  Transactions Object
+
+The state machine diagram represents the possible states of objects of that class 
+and the transitions based on different events from the moment a shipping transaction is first
+created by a customer through the Website, until the moment the package has been delivered to its final destination.
+
+![StateMachineDiagram](images/StateMachineDiagram.png)
