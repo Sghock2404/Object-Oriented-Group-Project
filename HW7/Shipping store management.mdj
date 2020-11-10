@@ -9,7 +9,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "UML",
+			"name": "Java",
 			"ownedElements": [
 				{
 					"_type": "UMLClassDiagram",
@@ -77,7 +77,7 @@
 											"top": 16,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -342,7 +342,7 @@
 											"top": -16,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -554,7 +554,7 @@
 											"top": -32,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -747,7 +747,7 @@
 											"left": -32,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -956,7 +956,7 @@
 											"top": -32,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -1544,7 +1544,7 @@
 											"top": -32,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -1824,7 +1824,7 @@
 											"top": -96,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -2069,7 +2069,7 @@
 											"top": -96,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -2488,7 +2488,7 @@
 											"top": 80,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -2950,7 +2950,7 @@
 											"font": "Arial;13;0",
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -3205,7 +3205,7 @@
 											"top": 240,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -3755,7 +3755,7 @@
 											"top": 64,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -4020,7 +4020,7 @@
 											"top": 48,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -4355,7 +4355,7 @@
 											"top": 192,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -4639,7 +4639,7 @@
 											"top": 304,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -4834,7 +4834,7 @@
 											"top": 256,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -6122,7 +6122,7 @@
 											"top": 64,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -6690,7 +6690,7 @@
 											"top": -64,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
@@ -7790,7 +7790,7 @@
 											"top": -16,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from UML)"
+											"text": "(from Java)"
 										},
 										{
 											"_type": "LabelView",
