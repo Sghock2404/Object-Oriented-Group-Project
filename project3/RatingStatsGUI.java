@@ -28,21 +28,20 @@ public class RatingStatsGUI {
         textField.setText(setup);
         dh.printDB();
 			
-        String welcomeMessage = "Choose one of the following functions:" + DataAnalysis.LINE_SEP
-            + "\t 1. Display computed statistics for specific dataID." + DataAnalysis.LINE_SEP
-            + "\t 2. Add new collection and compute statistics." + DataAnalysis.LINE_SEP
-            + "\t 0. Exit program." + DataAnalysis.LINE_SEP;
+        String[] selectOptions = new String[] {"Choose one of the following functions:" + DataAnalysis.LINE_SEP
+            , "1. Display computed statistics for specific dataID." + DataAnalysis.LINE_SEP
+            , "2. Add new collection and compute statistics." + DataAnalysis.LINE_SEP
+            , "0. Exit program." + DataAnalysis.LINE_SEP};
         
-            final JTextField welcomeMsg = new JTextField(FIELD_WIDTH);
-            welcomeMsg.setText(welcomeMessage);
+            JComboBox<String> dropDown = new JComboBox<String>(selectOptions);
 
             frame.setLayout(new FlowLayout());
             frame.add(textField);
-            frame.add(welcomeMsg);
+            frame.add(dropDown);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
-            
+
         }catch(IOException e){
             System.out.println("Dataset path not found: " + e.getMessage());
             System.out.println("Please check the file and try again, exiting.");
