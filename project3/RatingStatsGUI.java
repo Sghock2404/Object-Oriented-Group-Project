@@ -59,12 +59,14 @@ public class RatingStatsGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 String selection = (String) dropDown.getSelectedItem();
-                JOptionPane.showMessageDialog(RatingStatsGUI.this, "You selected option" + selectedIndex);
+                JOptionPane.showMessageDialog(RatingStatsGUI.this, "You selected option " + selectedIndex);
+
             }
         });
 
     }
 
+    // Option indexes start from 0
     public int getSelectedIndex() {
         return selectedIndex;
     }
@@ -78,7 +80,7 @@ public class RatingStatsGUI extends JFrame {
         frame.setVisible(true);
 
         int selection = frame.getSelectedIndex();
-            
-    }
+        System.out.println(selection);
 
+    }
 }
