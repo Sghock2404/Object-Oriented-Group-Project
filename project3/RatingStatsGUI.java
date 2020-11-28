@@ -14,6 +14,7 @@ public class RatingStatsGUI extends JFrame {
     private JLabel promptLabel;
     private JButton proceedButton;
     private JComboBox<String> dropDown;
+    private JTextField textBox;
     private int selectedIndex;
 
     // This sets up the GUI Frame (constructor)
@@ -39,6 +40,10 @@ public class RatingStatsGUI extends JFrame {
         proceedButton = new JButton();
         proceedButton.setText("Proceed");
         add(proceedButton);
+        
+        // Create a textBox field for entering dataID
+        textBox = new JTextField("Please enter a valid dataID...", 25);
+        add(textBox);
 
         // Add event listener for dropDown menu
         dropDown.addActionListener(new ActionListener() {
@@ -78,8 +83,6 @@ public class RatingStatsGUI extends JFrame {
                     if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
                         JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter new unique dataID"); 
-                        
-    
                     }
     
                     if (selectedIndex == 2) {
