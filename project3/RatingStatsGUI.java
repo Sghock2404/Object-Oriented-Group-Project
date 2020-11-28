@@ -15,7 +15,6 @@ public class RatingStatsGUI extends JFrame {
     private JButton proceedButton;
     private JComboBox<String> dropDown;
     private int selectedIndex;
-    static JTextField textField;
 
     // This sets up the GUI Frame (constructor)
     RatingStatsGUI() {
@@ -55,48 +54,50 @@ public class RatingStatsGUI extends JFrame {
         });
 
         // Add event listener for proceed button
-
         try {
-        DatasetHandler dh = new DatasetHandler();
-        Set<Dataset> datasets = dh.getDataSets();
-
-        proceedButton.addActionListener(new ActionListener() {
-        
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                if (selectedIndex == 0) {
-                        if (datasets.size()<1){
-                        String selection = (String) dropDown.getSelectedItem();
-                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "There is no data to select from, select another option");
+            DatasetHandler dh = new DatasetHandler();
+            Set<Dataset> datasets = dh.getDataSets();
+    
+            proceedButton.addActionListener(new ActionListener() {
+            
+                @Override
+                public void actionPerformed(ActionEvent event) {
+                    if (selectedIndex == 0) {
+                            if (datasets.size()<1){
+                            String selection = (String) dropDown.getSelectedItem();
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "There is no data to select from, select another option");
+                        }
+                        else {
+                            //dh.printDB();
+                            
+                            String selection = (String) dropDown.getSelectedItem();
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter dataID from the list");
+                        }
                     }
-                    else {
-                        //dh.printDB();
+    
+                    if (selectedIndex == 1) {
+                        String selection = (String) dropDown.getSelectedItem();
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter new unique dataID"); 
                         
-                        String selection = (String) dropDown.getSelectedItem();
-                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter dataID from the list");
+    
                     }
-                }
-
-                if (selectedIndex == 1) {
-                    String selection = (String) dropDown.getSelectedItem();
-                    JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter new unique dataID"); 
-                    
-
-                }
-
-                if (selectedIndex == 2) {
-                    String selection = (String) dropDown.getSelectedItem();
-                    JOptionPane.showMessageDialog(RatingStatsGUI.this, "Goodbye!"); 
-                }
+    
+                    if (selectedIndex == 2) {
+                        String selection = (String) dropDown.getSelectedItem();
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "Goodbye!"); 
+                    }
+            }
+        });
+    
+        }catch(IOException e){
+            System.out.println("Dataset path not found: " + e.getMessage());
+            System.out.println("Please check the file and try again, exiting.");
         }
-    });
+    }
 
-    }catch(IOException e){
-		System.out.println("Dataset path not found: " + e.getMessage());
-		System.out.println("Please check the file and try again, exiting.");
-	}
-}
+    
 
+    // Option indexes start from 0
     public int getSelectedIndex() {
         return selectedIndex;
     }
@@ -108,12 +109,9 @@ public class RatingStatsGUI extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        
-        
 
         int selection = frame.getSelectedIndex();
-            
-    }
+        System.out.println(selection);
 
-    
+    }
 }
