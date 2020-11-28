@@ -58,6 +58,7 @@ public class RatingStatsGUI extends JFrame {
         try {
             DatasetHandler dh = new DatasetHandler();
             Set<Dataset> datasets = dh.getDataSets();
+            
     
             proceedButton.addActionListener(new ActionListener() {
             
@@ -79,8 +80,26 @@ public class RatingStatsGUI extends JFrame {
                     if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
                         //JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter new unique dataID"); 
-                        JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID","Messages",2);
-                        
+                        String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID");
+                        if (!(dh.checkID(newDataID))){
+                            String fileName = JOptionPane.showInputDialog(RatingStatsGUI.this,
+                            "For new " + newDataID + " collection, what is the source file name?");
+                            boolean check = dh.addCollection(newDataID,fileName);
+                            boolean found = false;
+                            if(check) {
+                                
+                                JOptionPane.showMessageDialog(RatingStatsGUI.this, "Collection " + newDataID + " added");
+                                found = true;
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(RatingStatsGUI.this, "File not found! Try again.");
+                               
+                            }
+                        } else{
+                            
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, 
+                            newDataID + " is in the current database, displaying existing statistics.");
+                        }
                     }
     
                     if (selectedIndex == 2) {
