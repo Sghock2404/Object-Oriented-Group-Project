@@ -58,11 +58,13 @@ public class RatingStatsGUI extends JFrame {
             DatasetHandler dh = new DatasetHandler();
             Set<Dataset> datasets = dh.getDataSets();
             
+            
     
             proceedButton.addActionListener(new ActionListener() {
             
                 @Override
                 public void actionPerformed(ActionEvent event) {
+                    boolean found = false;
                     if (selectedIndex == 0) {
                             if (datasets.size()<1){
                             String selection = (String) dropDown.getSelectedItem();
@@ -70,32 +72,56 @@ public class RatingStatsGUI extends JFrame {
                         }
                         else {
                             // printDB() from DatasetHandler
-                        	JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID,RAW_FILE,RATINGS_NO,STAT_FILE" + 
-                            DataAnalysis.LINE_SEP);
+                            
+                            String content = "";
+                            for (final Dataset d : datasets) {
+                            content = content + d.toString() + DataAnalysis.STAT_FILE_TEMPLATE.replace("<dataID>", 
+                            d.getDataId())+ DataAnalysis.LINE_SEP;
+
+                            }
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID,RAW_FILE,RATINGS_NO,STAT_FILE" + 
+                            DataAnalysis.LINE_SEP + content);
                     		
                             String selection = (String) dropDown.getSelectedItem();
-                            //JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter dataID from the list");
                             String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this, "Please enter dataID from the list" );
                             
                             if (!(dh.checkID(newDataID))){
-                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID not in the current database, select another option");
-                            	} else {
-                            		boolean found = true;
-                            		}
-                            }
-                     }
+                                JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID not in the current database, select another option");
+                            } else {
+                            		found = true;
+                            	}
+                        }
+
+                        if (found) {
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "statistics are already computed and saved");
+                            String[] processStats = new String[] {"Choose one of the following functions"
+                            , "3. Use existing stat data" 
+                            , "4. Process statistics again, I have new data"};
+                            
+                            // Create Dropdown Menu
+                            dropDown = new JComboBox<String>(processStats);
+                            setLayout(new FlowLayout());
+                            add(dropDown);
+    
+                            // Create a proceed button
+                            proceedButton = new JButton();
+                            proceedButton.setText("Proceed");
+                            add(proceedButton);
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, dropDown);
+                        }
+
+
+                    }
     
                     if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
-                        //JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter new unique dataID"); 
                         String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID");
                         if (!(dh.checkID(newDataID))){
                             String fileName = JOptionPane.showInputDialog(RatingStatsGUI.this,
                             "For new " + newDataID + " collection, what is the source file name?");
                             boolean check = dh.addCollection(newDataID,fileName);
-                            boolean found = false;
+                            
                             if(check) {
-                                
                                 JOptionPane.showMessageDialog(RatingStatsGUI.this, "Collection " + newDataID + " added");
                                 found = true;
                             }
@@ -104,11 +130,12 @@ public class RatingStatsGUI extends JFrame {
                                
                             }
                         } else{
-                            
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, 
                             newDataID + " is in the current database, displaying existing statistics.");
                         }
                     }
+
+                   
     
                     if (selectedIndex == 2) {
                         String selection = (String) dropDown.getSelectedItem();
