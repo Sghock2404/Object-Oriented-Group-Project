@@ -14,7 +14,6 @@ public class RatingStatsGUI extends JFrame {
     private JLabel promptLabel;
     private JButton proceedButton;
     private JComboBox<String> dropDown;
-    private JTextField textBox;
     private int selectedIndex;
 
     // This sets up the GUI Frame (constructor)
@@ -70,12 +69,21 @@ public class RatingStatsGUI extends JFrame {
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, "There is no data to select from, select another option");
                         }
                         else {
-                            //dh.printDB();
-                            
+                            // printDB() from DatasetHandler
+                        	JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID,RAW_FILE,RATINGS_NO,STAT_FILE" + 
+                            DataAnalysis.LINE_SEP);
+                    		
                             String selection = (String) dropDown.getSelectedItem();
-                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter dataID from the list");
-                        }
-                    }
+                            //JOptionPane.showMessageDialog(RatingStatsGUI.this, "Please enter dataID from the list");
+                            String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this, "Please enter dataID from the list" );
+                            
+                            if (!(dh.checkID(newDataID))){
+                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID not in the current database, select another option");
+                            	} else {
+                            		boolean found = true;
+                            		}
+                            }
+                     }
     
                     if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
