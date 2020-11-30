@@ -69,14 +69,14 @@ public class RatingStatsGUI extends JFrame {
                             if (datasets.size()<1){
                             String selection = (String) dropDown.getSelectedItem();
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, "There is no data to select from, select another option");
-                        }
-                        else {
+                            }
+                            else {
                             // printDB() from DatasetHandler
                             
-                            String content = "";
-                            for (final Dataset d : datasets) {
-                            content = content + d.toString() + DataAnalysis.STAT_FILE_TEMPLATE.replace("<dataID>", 
-                            d.getDataId())+ DataAnalysis.LINE_SEP;
+                                String content = "";
+                                for (final Dataset d : datasets) {
+                                content = content + d.toString() + DataAnalysis.STAT_FILE_TEMPLATE.replace("<dataID>", 
+                                d.getDataId())+ DataAnalysis.LINE_SEP;
 
                             }
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID,RAW_FILE,RATINGS_NO,STAT_FILE" + 
@@ -85,11 +85,12 @@ public class RatingStatsGUI extends JFrame {
                             String selection = (String) dropDown.getSelectedItem();
                             newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this, "Please enter dataID from the list" );
                             
-                            if (!(dh.checkID(newDataID))){
+                            if (!(dh.checkID(newDataID))) {
                                 JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID not in the current database, select another option");
-                            } else {
-                            		found = true;
-                            	}
+                            } 
+                            else {
+                            	found = true;
+                            }
                         }
                     // end option 1
                     } else if (selectedIndex == 1) {
@@ -101,7 +102,7 @@ public class RatingStatsGUI extends JFrame {
                             "For new " + newDataID + " collection, what is the source file name?");
                             boolean check = dh.addCollection(newDataID,fileName);
                             
-                            if(check) {
+                            if (check) {
                                 JOptionPane.showMessageDialog(RatingStatsGUI.this, "Collection " + newDataID + " added");
                                 found = true;
                             }
@@ -109,17 +110,14 @@ public class RatingStatsGUI extends JFrame {
                                 JOptionPane.showMessageDialog(RatingStatsGUI.this, "File not found! Try again.");
                                
                             }
-                        } else{
+                        } 
+                        else {
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, 
                             newDataID + " is in the current database, displaying existing statistics.");
                         }
                     } // end option 2                 
     
-                    if (selectedIndex == 2) {
-                        String selection = (String) dropDown.getSelectedItem();
-                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "Goodbye!"); 
-                    } // end selection
-
+                    
                     if (found) {
                         JOptionPane.showMessageDialog(RatingStatsGUI.this,
                                 "statistics are already computed and saved");
@@ -163,6 +161,13 @@ public class RatingStatsGUI extends JFrame {
                             e.printStackTrace();
                         }
                     }
+                    
+                    else if (selectedIndex == 2) {
+                        String selection = (String) dropDown.getSelectedItem();
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "Goodbye!"); 
+                        // I think we can just remove this option from the dropdown since the user can just exit with the X button...
+                    } // end selection
+
                 
                 }
             });
