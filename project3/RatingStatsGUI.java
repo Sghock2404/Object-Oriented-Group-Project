@@ -26,9 +26,9 @@ public class RatingStatsGUI extends JFrame {
         add(promptLabel);
 
         // List of options for user to select from
-        String[] selectOptions = new String[] {"1. Display computed statistics for specific dataID." + DataAnalysis.LINE_SEP
-        , "2. Add new collection and compute statistics." + DataAnalysis.LINE_SEP
-        , "0. Exit program." + DataAnalysis.LINE_SEP};
+        String[] selectOptions = new String[] {"Display computed statistics for specific dataID" + DataAnalysis.LINE_SEP
+        , "Add new collection and compute statistics" + DataAnalysis.LINE_SEP
+        , "Exit program" + DataAnalysis.LINE_SEP};
 
         // Create Dropdown Menu
         dropDown = new JComboBox<String>(selectOptions);
@@ -58,12 +58,11 @@ public class RatingStatsGUI extends JFrame {
             DatasetHandler dh = new DatasetHandler();
             Set<Dataset> datasets = dh.getDataSets();
             
-            
-    
             proceedButton.addActionListener(new ActionListener() {
             
                 @Override
                 public void actionPerformed(ActionEvent event) {
+                
                     boolean found = false;
                     if (selectedIndex == 0) {
                             if (datasets.size()<1){
@@ -91,31 +90,11 @@ public class RatingStatsGUI extends JFrame {
                             		found = true;
                             	}
                         }
-
-                        if (found) {
-                            JOptionPane.showMessageDialog(RatingStatsGUI.this, "statistics are already computed and saved");
-                            String[] processStats = new String[] {"Choose one of the following functions"
-                            , "3. Use existing stat data" 
-                            , "4. Process statistics again, I have new data"};
-                            
-                            // Create Dropdown Menu
-                            dropDown = new JComboBox<String>(processStats);
-                            setLayout(new FlowLayout());
-                            add(dropDown);
-    
-                            // Create a proceed button
-                            proceedButton = new JButton();
-                            proceedButton.setText("Proceed");
-                            add(proceedButton);
-                            JOptionPane.showMessageDialog(RatingStatsGUI.this, dropDown);
-                        }
-
-
-                    }
-    
-                    if (selectedIndex == 1) {
+                    // end option 1
+                    } else if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
                         String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID");
+                    
                         if (!(dh.checkID(newDataID))){
                             String fileName = JOptionPane.showInputDialog(RatingStatsGUI.this,
                             "For new " + newDataID + " collection, what is the source file name?");
@@ -133,21 +112,40 @@ public class RatingStatsGUI extends JFrame {
                             JOptionPane.showMessageDialog(RatingStatsGUI.this, 
                             newDataID + " is in the current database, displaying existing statistics.");
                         }
-                    }
-
-                   
+                    } // end option 2                 
     
                     if (selectedIndex == 2) {
                         String selection = (String) dropDown.getSelectedItem();
                         JOptionPane.showMessageDialog(RatingStatsGUI.this, "Goodbye!"); 
+                    } // end selection
+
+                    if (found) {
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "statistics are already computed and saved");
+                        String[] processStats = new String[] {"Choose one of the following functions"
+                        , "3. Use existing stat data" 
+                        , "4. Process statistics again, I have new data"};
+                        
+                        // Create Dropdown Menu
+                        dropDown = new JComboBox<String>(processStats);
+                        setLayout(new FlowLayout());
+                        add(dropDown);
+
+                        // Create a proceed button
+                        proceedButton = new JButton();
+                        proceedButton.setText("Proceed");
+                        add(proceedButton);
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this, dropDown);
                     }
-            }
-        });
+                
+                }
+            });
+    
     
         }catch(IOException e){
             System.out.println("Dataset path not found: " + e.getMessage());
             System.out.println("Please check the file and try again, exiting.");
         }
+        
     }
 
     
