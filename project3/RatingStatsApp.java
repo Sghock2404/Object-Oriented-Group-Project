@@ -87,7 +87,7 @@ public class RatingStatsApp{
 					Dataset d = dh.populateCollection(newDataID);
 					String rc = "3";
 					int stats = d.statsExist();
-					if(stats > 0){
+					if(stats > 0) {
 						System.out.println(processStats);
 						rc = CONSOLE_INPUT.nextLine().strip();
 					}

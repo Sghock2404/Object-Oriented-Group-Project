@@ -83,7 +83,7 @@ public class RatingStatsGUI extends JFrame {
                             DataAnalysis.LINE_SEP + content);
                     		
                             String selection = (String) dropDown.getSelectedItem();
-                            String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this, "Please enter dataID from the list" );
+                            newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this, "Please enter dataID from the list" );
                             
                             if (!(dh.checkID(newDataID))){
                                 JOptionPane.showMessageDialog(RatingStatsGUI.this, "dataID not in the current database, select another option");
@@ -140,7 +140,6 @@ public class RatingStatsGUI extends JFrame {
                         Dataset d;
                         try {
                             d = dh.populateCollection(newDataID);
-                            // String rc = "3";
                             int stats = d.statsExist();
                             if (selectedIndex == 2 || (stats == 0)) {
                                 d.computeStats();
@@ -150,13 +149,15 @@ public class RatingStatsGUI extends JFrame {
                             }
 
                             int k = 20;
-                            String reportContent = dh.printReport(newDataID, k);
+                            String reportContent1 = dh.printReport(newDataID, k);
 
                             JFrame newFrame = new JFrame("Report");
                             newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                            newFrame.getContentPane().add(new JTextArea(reportContent));
+                            newFrame.getContentPane().add(new JTextArea(reportContent1));
                             newFrame.setSize(500, 700);
+                            newFrame.pack();
                             newFrame.setVisible(true);
+                            
                         }
                         catch (IOException e) {
                             e.printStackTrace();
