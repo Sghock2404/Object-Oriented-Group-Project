@@ -94,17 +94,19 @@ public class DatasetHandler{
 	 * @param dataID
 	 * @param k
 	 */
-	public void printReport(final String dataID, int k){
+	public String printReport(final String dataID, int k){
 		
 		try{
 			
 			String report = DataAnalysis.printReport(this.getCollection(dataID).getRatingStat(),k);
 			System.out.println(report);
 			Files.writeString(this.defineReportPath(dataID),report);
+			return report;
 			
 		}catch(IOException e){
 			System.out.println("Failed to save report, file not found");
 		}
+		return " ";
 	}
 
 	/**

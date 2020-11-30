@@ -15,6 +15,7 @@ public class RatingStatsGUI extends JFrame {
     private JButton proceedButton;
     private JComboBox<String> dropDown;
     private int selectedIndex;
+    private String newDataID;
 
     // This sets up the GUI Frame (constructor)
     RatingStatsGUI() {
@@ -93,7 +94,7 @@ public class RatingStatsGUI extends JFrame {
                     // end option 1
                     } else if (selectedIndex == 1) {
                         String selection = (String) dropDown.getSelectedItem();
-                        String newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID");
+                        newDataID = JOptionPane.showInputDialog(RatingStatsGUI.this,"Please enter new unique dataID");
                     
                         if (!(dh.checkID(newDataID))){
                             String fileName = JOptionPane.showInputDialog(RatingStatsGUI.this,
@@ -120,11 +121,11 @@ public class RatingStatsGUI extends JFrame {
                     } // end selection
 
                     if (found) {
-                        JOptionPane.showMessageDialog(RatingStatsGUI.this, "statistics are already computed and saved");
-                        String[] processStats = new String[] {"Choose one of the following functions"
-                        , "3. Use existing stat data" 
-                        , "4. Process statistics again, I have new data"};
-                        
+                        JOptionPane.showMessageDialog(RatingStatsGUI.this,
+                                "statistics are already computed and saved");
+                        String[] processStats = new String[] { "Choose one of the following functions",
+                                "3. Use existing stat data", "4. Process statistics again, I have new data" };
+
                         // Create Dropdown Menu
                         dropDown = new JComboBox<String>(processStats);
                         setLayout(new FlowLayout());
@@ -135,6 +136,31 @@ public class RatingStatsGUI extends JFrame {
                         proceedButton.setText("Proceed");
                         add(proceedButton);
                         JOptionPane.showMessageDialog(RatingStatsGUI.this, dropDown);
+
+                        Dataset d;
+                        try {
+                            d = dh.populateCollection(newDataID);
+                            // String rc = "3";
+                            int stats = d.statsExist();
+                            if (selectedIndex == 2 || (stats == 0)) {
+                                d.computeStats();
+                                // save stats if recomputed
+                                dh.saveStats(newDataID);
+                                dh.saveDB();
+                            }
+
+                            int k = 20;
+                            String reportContent = dh.printReport(newDataID, k);
+
+                            JFrame newFrame = new JFrame("Report");
+                            newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                            newFrame.getContentPane().add(new JTextArea(reportContent));
+                            newFrame.setSize(500, 700);
+                            newFrame.setVisible(true);
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 
                 }
