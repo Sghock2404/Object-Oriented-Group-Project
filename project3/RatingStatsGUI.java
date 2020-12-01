@@ -8,6 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * Provides functionality of a GUI for RatingStatsApp
+ * 
+ * @author Himaja
+ * @author Daniel
+ * @author Scott
+ *
+ */
+
 public class RatingStatsGUI extends JFrame {
     
     // I grabbed this template from zybooks and found a similar one from another website as well
@@ -44,6 +53,11 @@ public class RatingStatsGUI extends JFrame {
         // Add event listener for dropDown menu
         dropDown.addActionListener(new ActionListener() {
 
+        	/**
+        	 * actionPerformed of type void for dropDown menu
+        	 * 
+        	 * @param event
+        	 */
             @Override
             public void actionPerformed(ActionEvent event) {
                 JComboBox<String> combo = (JComboBox<String>) event.getSource();
@@ -62,6 +76,11 @@ public class RatingStatsGUI extends JFrame {
             proceedButton.addActionListener(new ActionListener() {
             
                 @Override
+                /**
+                 * actionPerformed of type void for proceedButton
+                 * 
+                 * @param event
+                 */
                 public void actionPerformed(ActionEvent event) {
                 
                     boolean found = false;
@@ -183,6 +202,11 @@ public class RatingStatsGUI extends JFrame {
     
 
     // Option indexes start from 0
+    /**
+     * get selected index from choices
+     * 
+     * @return selected index
+     */
     public int getSelectedIndex() {
         return selectedIndex;
     }
