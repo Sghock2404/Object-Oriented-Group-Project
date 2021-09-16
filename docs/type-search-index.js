@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"project1","l":"AbstractRatingSummary"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"project1","l":"DataAnalysis"},{"p":"project1","l":"Dataset"},{"p":"project1","l":"DatasetHandler"},{"p":"project1","l":"Rating"},{"p":"project1","l":"RatingStatsApp"},{"p":"project1","l":"RatingSummary"}]
