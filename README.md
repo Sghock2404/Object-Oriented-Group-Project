@@ -1,88 +1,86 @@
-# ADS
-Scott, Himaja, Daniel
-###  1. Use Cases and Use Case 
----
+ADS
 
-**Use Case: Manage Shipping Packages**
-* The System maintains all completed or ongoing shipment transactions. This list is updated as packages are initialized, delivered and completed
+IMPORTANT: This repository is an archived collection of projects done within an Object Oriented Programming class in Fall 2020.
 
-**Use Case: Update Website**
-* The website promotes communication between the customer and the employee. Shipping transaction information can be found here.
+The first project, project1, contains code for an Amazon review data analysis program - where datasets containing product reviews and metadata (obtained from https://jmcauley.ucsd.edu/data/amazon/) are processed in order to determine credibility of certain amazon reviews.
 
-**Use Case: Edit Package Info**
-* Employee can update, add or remove a package from inventory
-* When the package is delivered, the package is removed from inventory (Use Case: Manage Shipping Packages) which updates website info (Use case: Update Website)
+The second project, project2, contains unit tests implemented to test some of the functions of the Amazon review program. These tests were ran on an optimal version of project1 provided by the teacher.
 
-**Use Case: Create Shipping Transaction**
-* Customer or Employee can create a transaction on the website or employee can do it at the store 
-* Add package to system (Use Case: Manage Shipping Packages) 
+The third project, project3, implements a GUI for project1 using Java Swing and JavaFX.
 
-**Use Case: Pickup Package**
-* Add Employee ID to package info and inventory (Use Case: Edit Package info)
-* Package status is changed to Active (Use Case: Edit Package Info)
+NOTE: The class was listed as an introductory Java class, so this was a very challenging project to pursue for a lot of us - the main objective of the projects was to help us understand the process of interpreting and understanding a larger and imperfect codebase and attempt to make it work in a group.
 
-**Use Case: Deliver Package**
-* Package removed from inventory (Use Case: Edit Package Info)
-* Package status is changed to Completed
-* Update accounting with profit (Use Case: Update Accounting)
-* (OPTIONAL) Print transaction form (Use Case: Print Forms) 
+THE TEXT BELOW IS A TUTORIAL I WROTE FOR MY GROUP TO ACCOMPANY MY EFFORTS TO TEACH THEM HOW TO USE GIT FOR OUR PROJECTS WITHOUT GOING TOO FAR INTO COMPLICATED TOPICS.
+General
 
-**Use Case: Update Accounting**
-* It keeps track of income, expenses and profit from shipping transactions and salary payments
-* Administrator can optionally print forms
+Here's an outline of how we're going to add progress to this development branch. We're going to add changes here because normally people save the master branch for "deployment-ready" code - so we'll treat it as our final product :)
 
-**Use Case: Add Customer to Database**
-* Allows employee to add information about new customer to database
-* Allows customer to create account on website
+My goal is that this README helps you both out with understanding our project structure - if something doesn't work let me know and I'll make changes to this text.
 
-**Use Case: Edit Customer Info**
-* Allows employee to edit the information of a customer or package
-* Allows customer to edit information of their account
-* Employees types updated information.
+There are also a lot of other git commands that can do very elaborate things and smoothen out this process - we'll use those on the next projects but for now let's get the basic idea of collaborating on git :)
+Setup
+Cloning the repository
 
-**Use Case: Respond to Customer Msg**
-* Allows employee to respond to a question sent by a customer through the website
-* Unanswered messages are pulled from question queue and displayed to employee
-* An email response from employee is sent to the customer
+First let's git clone this repository into the 2020Fall class repository:
 
-**Use Case: Edit Employee Info**
-* Allows system administrators to add/update/delete employees or administrators to and from the system
-* A new employee record is created/changed/removed from database
+$ cd .../2020Fall
+$ git clone https://git.txstate.edu/CS3354/ADS.git
 
-**Use Case: Print Forms**
-* Allows administrators to print financial forms (Balance Sheets, Cash Flow, Invoice, etc.)
-* Allows Employees or Customers to print receipt or labels
+Checking out a 'development' branch
 
+Now we're going to cd into the new directory and checkout a development branch so that we don't make changes to the master branch - our final product:
 
-**Use Case: Track Package**
-* Allows customers to create an account, create a shipping transaction, track packages
-* Package info is displayed to customers
+$ cd ADS
+$ git fetch
+$ git checkout development
 
-**Use Case: Send Message to Dealer**
-* Allows customer to send message to Shipping Company with questions
-* Customers type their info and message
-* Customers need an account to create a message (Use Case: Add Customer to Database)
-* Message placed in messages queue
+First we fetch the available branches from our remote repository. When we checkout, what we're doing is slecting the remote branch development.
+Updating the local repository with new changes
 
-![UseCaseDiagram](images/UseCaseDiagram1.png)
+When we make commits and add changes to the development branch, we'll need a way for other people to see and access these changes. We'll do that with the following command:
 
-### 2. CRC Cards and Class Diagram
-![crcCard1](images/crcCard1.JPG)
-![crcCard2](images/crcCard2.JPG)
-![ClassDiagram](images/ClassDiagram.png)
+$ git pull origin development
 
-### 3. Sequence Diagram for new shipping transaction
+pull origin <target_repo> will update AND OVERRIDE your local cloned repository with the new changes made on the development branch - our target. This might cause some conflict if we're pushing new code addittions at the same time, but we can manage what happens. We'll get better at this, I promise!
 
-The sequence diagram below shows the sequence of operations for an employee to create 
-new shipping transaction and collect the package from the customer.
+Sidenote: There's a fetch command that won't overwrite what you have in your local repo on your computer - and if I figure out an easy way to explain that I'll let y'all know. Feel free to add onto this README if you have an easy way of sharing with everyone how to use it in this context.
 
-![SequenceDiagram](images/SequenceDiagram.png)
+Context of branches: I read in an article that usually, separate branches are places where developers in a team will work on features, debugging, etc.. Say for example we're developing a social media website/app for dogs, if we planned on implementing an explore page, what we could do is create a new branch called explore_page, and add work towards that feature in that branch. Whenever the work for that feature is ready to be deployed, that's when the explore_page branch is merged with the master one.
+Adding and committing changes
 
-### 4. State Machine Diagram for assumed class "Transactions"
+As you do work and finish implementing something, add and commit those changes - push them as well so that everyone can access those changes
 
-The state machine diagram below represents  the possible states of objects of that class (Transactions)
-and the transitions based on different events from the moment a shipping transaction is first created by a
-customer through the Website, until the moment the package has been delivered to its final
-destination.
+  $ git add .
+  $ git commit -m 'Implement bananaFarm()'
+  $ git push origin development
+  
+  //some time later
+  $ git add .
+  $ git commit -m "fix harvest operation in bananaFarm()"
+  $ git push origin development
 
-![StateMachineDiagram](images/StateMachineDiagram.png)
+I believe that normally in a professional setting we would not push every single commit we make to the branch in the remote repository on GitHub, but for now that's what we'll do since we're learning. Also, since we're not working on a greenfield project this will do.
+
+Eventually, when we finish the assignment, I'll merge the development branch into the master branch and that will be what we make copies of and upload into our CS3354/NetID repository to submit.
+Assignment Details and Progress
+
+Main goal regardless of the correctness of any code implementation we make:
+
+    Show Object-Oriented Princples, only add what's missing, and make sure this compiles
+
+Here's some basic information about the code we have so far
+
+    Rating.java, AbstractRatingSummary.java, and RatingStatsApp.java are already implemented and can compile. All we need to do for those and every other file is to add relevant packages
+    RatingSummary.java is where a lot of the statistical computations will take place. It also contains basic member functions like constructors and get/set methods - 12 methods total.
+    DataAnalysis.java is a utility class, and we just need to implement 2 methods in here. Prof said that the lecture and notes from 9/24 (comparators, sorting collections) are helpful for solving this part.
+    DataSet.java just needs 1 method implemented, a computeStats() method
+    DataSetHandler.java handles the databse, and prints the results of everything onto the console (System.out.println), and onto a text file (File I/O). 3 total methods
+
+This is a rough estimate, but it seems like we have 5 different types of tasks that need to be implemented
+
+    Complete accessor/mutator/constructor methods for RatingSummary.java
+    Parsing and reading the databse file (.csv)
+    Calculating Statistics with the parsed database file (.csv)
+    Output Calculated Statistics and Data (terminal & textfile)
+
+Like we mentioned in our meeting, the provided code is pretty complicated, so I don't think we should assign strict tasks. I think what we should do is call out what we want (and will) work on in Microsoft Teams at the time you plan on working on something. If a task looks too difficult for any one of us to accomplish solo (like parsing the database or calculating statistics), we should consider having a discussion (in voice/video/text-chat) and solve the problems together. I think pair/trio programming might be an awesome learning experience for each of us.
